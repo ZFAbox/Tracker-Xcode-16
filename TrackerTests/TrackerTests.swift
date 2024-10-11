@@ -5,13 +5,67 @@
 //  Created by Fedor on 11.10.2024.
 //
 
-import Testing
+import XCTest
+import SnapshotTesting
 @testable import Tracker
 
-struct TrackerTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+final class TrackerTests: XCTestCase {
+
+    func testEmptyViewControllerLight() {
+
+        let removeAllTrackers = true
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        guard let date = dateFormatter.date(from: "01.01.2024") else { return }
+        let viewModel = TrackerViewModelMock(selectedDate: date, removeAllTrackers: removeAllTrackers)
+        
+        let vc = TrackerViewController(viewModel: viewModel)
+        vc.setDatePickerDate(date: date)
+        
+        assertSnapshot(of: vc, as: .image(traits: .init(userInterfaceStyle: .light)))
     }
+    
+    
+    func testEmptyViewControllerDark() {
 
+        let removeAllTrackers = true
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        guard let date = dateFormatter.date(from: "01.01.2024") else { return }
+        let viewModel = TrackerViewModelMock(selectedDate: date, removeAllTrackers: removeAllTrackers)
+        
+        let vc = TrackerViewController(viewModel: viewModel)
+        vc.setDatePickerDate(date: date)
+        
+        assertSnapshot(of: vc, as: .image(traits: .init(userInterfaceStyle: .dark)))
+    }
+    
+    func testLightModeTrackerController() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        guard let date = dateFormatter.date(from: "01.01.2024") else { return }
+        let viewModel = TrackerViewModelMock(selectedDate: date, removeAllTrackers: false)
+        
+        
+        let vc = TrackerViewController(viewModel: viewModel)
+        vc.setDatePickerDate(date: date)
+        
+        assertSnapshot(of: vc, as: .image(traits: .init(userInterfaceStyle: .light)))
+        }
+
+    func testDarkModeTrackerController() {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        guard let date = dateFormatter.date(from: "01.01.2024") else { return }
+        let viewModel = TrackerViewModelMock(selectedDate: date, removeAllTrackers: false)
+        
+        let vc = TrackerViewController(viewModel: viewModel)
+        vc.setDatePickerDate(date: date)
+        
+        assertSnapshot(of: vc, as: .image(traits: .init(userInterfaceStyle: .dark)))
+    }
 }
+
