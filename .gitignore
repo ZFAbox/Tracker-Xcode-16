@@ -18,6 +18,7 @@ xcuserdata/
 Pods/
 *.lock
 *.xcworkspace
+__Snapshots__/
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
