@@ -560,9 +560,6 @@ extension TrackerViewController: UICollectionViewDelegateFlowLayout {
     
     func removeTracker(indexPath: IndexPath) {
                 viewModel.deleteTrackerMetrica()
-        //        viewModel.removeTracker(indexPath: indexPath)
-        
-        
         if (self.viewModel.numberOfSectionsPinCategory() == 1 ) && (indexPath.section == 0) {
             self.viewModel.removePinTracker(indexPath: indexPath)
         } else {
@@ -584,17 +581,10 @@ extension TrackerViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfiguration configuration: UIContextMenuConfiguration, highlightPreviewForItemAt indexPath: IndexPath) -> UITargetedPreview? {
-        if (self.viewModel.numberOfSectionsPinCategory() == 1 ) && (indexPath.section == 0) {
             let cellIndex = indexPath
             let cell = collectionView.cellForItem(at: cellIndex) as! TrackerCollectionViewCell
             let selectedView = cell.setSelectedView()
             return UITargetedPreview(view: selectedView)
-        } else {
-            let cellIndex = IndexPath(row: indexPath.row, section: indexPath.section - self.viewModel.numberOfSectionsPinCategory())
-            let cell = collectionView.cellForItem(at: cellIndex) as! TrackerCollectionViewCell
-            let selectedView = cell.setSelectedView()
-            return UITargetedPreview(view: selectedView)
-        }
     }
 }
 

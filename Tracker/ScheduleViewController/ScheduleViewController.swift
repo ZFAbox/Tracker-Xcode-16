@@ -130,6 +130,38 @@ extension ScheduleViewController: UITableViewDataSource {
         return cell
     }
     
+//    func configureCell(_ cell:UITableViewCell, at indexPath: IndexPath){
+//        cell.textLabel?.text = Weekdays.weekdayForIndex(at: indexPath.row).localized
+//        let switcher = UISwitch(frame: .zero)
+//        switcher.setOn(false, animated: true)
+//        switcher.tag = indexPath.row
+//        switcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+//        switcher.onTintColor = .trackerBlue
+//        cell.accessoryView = switcher
+//        cell.backgroundColor = .trackerBackgroundOpacityGray
+//    }
+//    
+//    @objc func switchChanged(_ sender: UISwitch){
+//        if sender.isOn {
+//            let weekday = Weekdays.weekdayForIndex(at: sender.tag)
+//            trackerSchedule.append( weekday.localized)
+//            print("Добален день недели \(weekday.localized)")
+//            scheduleSubtitle.append(Weekdays.shortWeekdayDescription(weekday: weekday))
+//            scheduleSubtitle = scheduleSubtitle.reorder(by: Weekdays.scheduleSubtitlesArray)
+//            print(scheduleSubtitle)
+//        } else {
+//            trackerSchedule.removeAll { weekday in
+//                weekday == Weekdays.weekdayForIndex(at: sender.tag).localized
+//            }
+//            scheduleSubtitle.removeAll { subtitle in
+//                subtitle == Weekdays.scheduleSubtitlesArray[sender.tag]
+//            }
+//            print("Удален день недели \(Weekdays.weekdayForIndex(at: sender.tag).localized)")
+//        }
+//        print(trackerSchedule)
+//        sender.isEnabled = true
+//    }
+    
     func configureCell(_ cell:UITableViewCell, at indexPath: IndexPath){
         cell.textLabel?.text = Weekdays.weekdayForIndex(at: indexPath.row).localized
         let switcher = UISwitch(frame: .zero)
@@ -143,20 +175,21 @@ extension ScheduleViewController: UITableViewDataSource {
     
     @objc func switchChanged(_ sender: UISwitch){
         if sender.isOn {
-            let weekday = Weekdays.weekdayForIndex(at: sender.tag)
-            trackerSchedule.append( weekday.localized)
-            print("Добален день недели \(weekday.localized)")
-            scheduleSubtitle.append(Weekdays.shortWeekdayDescription(weekday: weekday))
+            let weekdayNumber = sender.tag + 1
+            trackerSchedule.append( String(weekdayNumber))
+            print("Добален день недели с номером: \(weekdayNumber)")
+            scheduleSubtitle.append(Weekdays.shortWeekdayDescription(weekdayNumber: weekdayNumber))
             scheduleSubtitle = scheduleSubtitle.reorder(by: Weekdays.scheduleSubtitlesArray)
-            print(scheduleSubtitle)
+            print("Упорядоченное расписание: \(scheduleSubtitle)")
         } else {
-            trackerSchedule.removeAll { weekday in
-                weekday == Weekdays.weekdayForIndex(at: sender.tag).localized
+            trackerSchedule.removeAll { weekdayNumber in
+                let removedWeekdayNumber = String(sender.tag + 1)
+                return weekdayNumber == removedWeekdayNumber
             }
             scheduleSubtitle.removeAll { subtitle in
                 subtitle == Weekdays.scheduleSubtitlesArray[sender.tag]
             }
-            print("Удален день недели \(Weekdays.weekdayForIndex(at: sender.tag).localized)")
+            print("Удален день недели: \(Weekdays.weekdayForIndex(at: (sender.tag)).localized)")
         }
         print(trackerSchedule)
         sender.isEnabled = true
