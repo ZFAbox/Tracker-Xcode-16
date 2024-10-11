@@ -13,6 +13,7 @@ xcuserdata/
 *.xcscmblueprint
 *.xccheckout
 
+<<<<<<< HEAD
 ## pods ignore
 Pods/
 *.lock
@@ -20,6 +21,10 @@ Pods/
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
+=======
+## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+Pods/
+>>>>>>> e47df359129b5c545f58f4ba1cecf4b801ef5dc8
 build/
 DerivedData/
 *.moved-aside
