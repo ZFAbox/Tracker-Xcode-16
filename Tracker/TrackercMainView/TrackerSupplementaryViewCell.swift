@@ -38,6 +38,8 @@ class TrackerSupplementaryViewCell: UICollectionReusableView {
 class TrackerCollectionHeaderView {
     
     static let shared = TrackerSupplementaryViewCell(frame: .zero)
+    private init() {}
+    
 }
 
 

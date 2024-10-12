@@ -122,17 +122,7 @@ extension FilterViewController: UITableViewDataSource {
         let filterNameText = filters[indexPath.row]
         cell.setFilterNameText(filterNameText)
         cell.backgroundColor = .trackerBackgroundOpacityGray
-//        if (isFilterSelected == true) && (filters[indexPath.row] == selectedFilter) {
-//            cell.checkMarkIsHidden(false)
-//        } else {
-//            cell.checkMarkIsHidden(true)
-//        }
         cell.checkMarkIsHidden(!((isFilterSelected == true) && (filters[indexPath.row] == selectedFilter)))
-//        if indexPath.row == filters.count - 1 {
-//            cell.separateViewIsHidden(true)
-//        } else {
-//            cell.separateViewIsHidden(false)
-//        }
         cell.separateViewIsHidden(indexPath.row == filters.count - 1)
         return cell
     }
