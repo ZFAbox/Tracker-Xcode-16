@@ -119,17 +119,23 @@ extension FilterViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterTableViewCell
-        cell.filterName.text = filters[indexPath.row]
+        let filterNameText = filters[indexPath.row]
+        cell.setFilterNameText(filterNameText)
+//        cell.filterName.text = filters[indexPath.row]
         cell.backgroundColor = .trackerBackgroundOpacityGray
         if (isFilterSelected == true) && (filters[indexPath.row] == selectedFilter) {
-            cell.checkMark.isHidden = false
+//            cell.checkMark.isHidden = false
+            cell.checkMarkIsHidden(false)
         } else {
-            cell.checkMark.isHidden = true
+//            cell.checkMark.isHidden = true
+            cell.checkMarkIsHidden(true)
         }
         if indexPath.row == filters.count - 1 {
-            cell.separatorView.isHidden = true
+//            cell.separatorView.isHidden = true
+            cell.separateViewIsHidden(true)
         } else {
-            cell.separatorView.isHidden = false
+//            cell.separatorView.isHidden = false
+            cell.separateViewIsHidden(false)
         }
         return cell
     }
@@ -146,7 +152,8 @@ extension FilterViewController: UITableViewDelegate {
             selectedFilter = ""
         } else {
             cell.checkMark.isHidden = false
-            selectedFilter = cell.filterName.text ?? ""
+//            selectedFilter = cell.filterName.text ?? ""
+            selectedFilter = cell.getFilterNameText()
             isFilterSelected = true
             for cellIndex in 0...filters.count - 1 {
                 if cellIndex != indexPath.row {

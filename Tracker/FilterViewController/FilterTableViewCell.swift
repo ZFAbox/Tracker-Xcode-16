@@ -10,7 +10,7 @@ import UIKit
 
 final class FilterTableViewCell: UITableViewCell {
     
-    lazy var filterName: UILabel = {
+    private lazy var filterName: UILabel = {
         let lable = UILabel()
         lable.translatesAutoresizingMaskIntoConstraints = false
         lable.text = "Категория"
@@ -45,19 +45,37 @@ final class FilterTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addSubiews(){
+    func setFilterNameText(_ filterNameText: String) {
+        self.filterName.text = filterNameText
+    }
+    
+    func getFilterNameText() -> String {
+        guard let filterNameText = self.filterName.text else { return "" }
+        return filterNameText
+    }
+    func checkMarkIsHidden(_ isHidden: Bool){
+        self.checkMark.isHidden = isHidden
+    }
+    
+    func separateViewIsHidden(_ isHidden: Bool){
+        self.separatorView.isHidden = isHidden
+    }
+    
+    
+    
+    private func addSubiews(){
         contentView.addSubview(filterName)
         contentView.addSubview(separatorView)
         contentView.addSubview(checkMark)
     }
     
-    func setConstraints(){
+    private func setConstraints(){
         setCategoryNameConstraints()
         setSeparatorConstraints()
         setCheckMarkConstraints()
     }
     
-    func setCategoryNameConstraints (){
+    private func setCategoryNameConstraints (){
         NSLayoutConstraint.activate([
             filterName.topAnchor.constraint(equalTo: contentView.topAnchor),
             filterName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -65,7 +83,7 @@ final class FilterTableViewCell: UITableViewCell {
         ])
     }
     
-    func setCheckMarkConstraints (){
+    private func setCheckMarkConstraints (){
         NSLayoutConstraint.activate([
             checkMark.centerYAnchor.constraint(equalTo: filterName.centerYAnchor),
             checkMark.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -21),
@@ -82,6 +100,5 @@ final class FilterTableViewCell: UITableViewCell {
             separatorView.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
-    
 }
 
