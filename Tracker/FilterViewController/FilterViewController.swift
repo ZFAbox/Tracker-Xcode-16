@@ -121,22 +121,19 @@ extension FilterViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterTableViewCell
         let filterNameText = filters[indexPath.row]
         cell.setFilterNameText(filterNameText)
-//        cell.filterName.text = filters[indexPath.row]
         cell.backgroundColor = .trackerBackgroundOpacityGray
-        if (isFilterSelected == true) && (filters[indexPath.row] == selectedFilter) {
-//            cell.checkMark.isHidden = false
-            cell.checkMarkIsHidden(false)
-        } else {
-//            cell.checkMark.isHidden = true
-            cell.checkMarkIsHidden(true)
-        }
-        if indexPath.row == filters.count - 1 {
-//            cell.separatorView.isHidden = true
-            cell.separateViewIsHidden(true)
-        } else {
-//            cell.separatorView.isHidden = false
-            cell.separateViewIsHidden(false)
-        }
+//        if (isFilterSelected == true) && (filters[indexPath.row] == selectedFilter) {
+//            cell.checkMarkIsHidden(false)
+//        } else {
+//            cell.checkMarkIsHidden(true)
+//        }
+        cell.checkMarkIsHidden(!((isFilterSelected == true) && (filters[indexPath.row] == selectedFilter)))
+//        if indexPath.row == filters.count - 1 {
+//            cell.separateViewIsHidden(true)
+//        } else {
+//            cell.separateViewIsHidden(false)
+//        }
+        cell.separateViewIsHidden(indexPath.row == filters.count - 1)
         return cell
     }
 }
@@ -146,19 +143,18 @@ extension FilterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! FilterTableViewCell
-        if cell.checkMark.isHidden == false {
-            cell.checkMark.isHidden = true
+        if !cell.isCheckMarkHidden()  {
+            cell.checkMarkIsHidden(true)
             isFilterSelected = false
             selectedFilter = ""
         } else {
-            cell.checkMark.isHidden = false
-//            selectedFilter = cell.filterName.text ?? ""
+            cell.checkMarkIsHidden(false)
             selectedFilter = cell.getFilterNameText()
             isFilterSelected = true
             for cellIndex in 0...filters.count - 1 {
                 if cellIndex != indexPath.row {
                     let otherCell = tableView.cellForRow(at: IndexPath(row: cellIndex, section: 0)) as! FilterTableViewCell
-                    otherCell.checkMark.isHidden = true
+                    otherCell.checkMarkIsHidden(true)
                 }
             }
         }

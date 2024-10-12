@@ -19,7 +19,7 @@ final class FilterTableViewCell: UITableViewCell {
         return lable
     }()
     
-    lazy var checkMark: UIImageView = {
+    private lazy var checkMark: UIImageView = {
         let  image = UIImage(named: "Check Mark")
         let  imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +27,7 @@ final class FilterTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    lazy var separatorView: UIView = {
+    private lazy var separatorView: UIView = {
         let separator = UIView()
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = .trackerDarkGrayOpacity70
@@ -61,7 +61,9 @@ final class FilterTableViewCell: UITableViewCell {
         self.separatorView.isHidden = isHidden
     }
     
-    
+    func isCheckMarkHidden() -> Bool{
+        return self.checkMark.isHidden
+    }
     
     private func addSubiews(){
         contentView.addSubview(filterName)
