@@ -13,7 +13,7 @@ protocol TrackerCollectionViewCellProtocol: AnyObject {
     func uncompleteTracker(id: UUID, at indexPath: IndexPath)
 }
 
-class TrackerCollectionViewCell: UICollectionViewCell {
+final class TrackerCollectionViewCell: UICollectionViewCell {
     
     var count = 0
     

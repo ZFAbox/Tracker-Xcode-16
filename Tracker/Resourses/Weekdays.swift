@@ -79,7 +79,6 @@ enum Weekdays: String, Codable{
         }
     }
     
-    
     static func weekdayForIndex(at index: Int) -> Weekdays {
         switch index {
         case 0:
@@ -121,6 +120,4 @@ enum Weekdays: String, Codable{
             preconditionFailure("Не корректное наименование дня недели")
         }
     }
-    
-    
 }

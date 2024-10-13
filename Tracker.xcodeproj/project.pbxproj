@@ -318,11 +318,11 @@
 		900AB3952CB9CC7B00A28B12 /* TrackercMainView */ = {
 			isa = PBXGroup;
 			children = (
+				900AB3912CB9CC7B00A28B12 /* TrackerViewController.swift */,
+				900AB3922CB9CC7B00A28B12 /* TrackerViewModel.swift */,
 				900AB38E2CB9CC7B00A28B12 /* TrackerBinding.swift */,
 				900AB38F2CB9CC7B00A28B12 /* TrackerCollectionViewCell.swift */,
 				900AB3902CB9CC7B00A28B12 /* TrackerSupplementaryViewCell.swift */,
-				900AB3912CB9CC7B00A28B12 /* TrackerViewController.swift */,
-				900AB3922CB9CC7B00A28B12 /* TrackerViewModel.swift */,
 				900AB3932CB9CC7B00A28B12 /* TrackerViewModelMock.swift */,
 			);
 			path = TrackercMainView;

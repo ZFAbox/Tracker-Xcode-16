@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class NotRegularTrackerEditViewController: UIViewController {
+final class NotRegularTrackerEditViewController: UIViewController {
 
     var delegate: TrackerUpdateViewControllerProtocol
     private var category: String? {

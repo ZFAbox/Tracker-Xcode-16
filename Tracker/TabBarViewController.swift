@@ -14,9 +14,6 @@ final class TabBarViewController: UITabBarController {
     lazy var trackerViewController = TrackerViewController(viewModel: self.viewModel)
     lazy var statisticViewController = StatisticViewController(viewModel: self.viewModel)
     
-    @objc func tapPicker(){
-    }
-    
     enum TabBars: String {
         case trackers
         case statistic

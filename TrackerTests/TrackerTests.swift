@@ -11,9 +11,9 @@ import SnapshotTesting
 
 
 final class TrackerTests: XCTestCase {
-
+    
     func testEmptyViewControllerLight() {
-
+        
         let removeAllTrackers = true
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
@@ -28,7 +28,7 @@ final class TrackerTests: XCTestCase {
     
     
     func testEmptyViewControllerDark() {
-
+        
         let removeAllTrackers = true
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
@@ -53,10 +53,10 @@ final class TrackerTests: XCTestCase {
         vc.setDatePickerDate(date: date)
         
         assertSnapshot(of: vc, as: .image(traits: .init(userInterfaceStyle: .light)))
-        }
-
+    }
+    
     func testDarkModeTrackerController() {
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         guard let date = dateFormatter.date(from: "01.01.2024") else { return }

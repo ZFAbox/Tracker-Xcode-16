@@ -13,7 +13,7 @@ protocol TrackerUpdateViewControllerProtocol{
     func updateTracker(category: String, tracker: Tracker, indexPath: IndexPath, isPined: Bool)
 }
 
-class RegularTrackerEditViewController: UIViewController, ScheduleViewControllerProtocol {
+final class RegularTrackerEditViewController: UIViewController, ScheduleViewControllerProtocol {
     
     var delegate: TrackerUpdateViewControllerProtocol
     private var category: String? {
