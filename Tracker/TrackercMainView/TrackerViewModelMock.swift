@@ -61,19 +61,19 @@ protocol TrackerViewModelProtocol: FilterViewControllerProtocol, TrackerStoreUpd
     
     func report(event: Event, screen: Screen, item: Item?)
     
-    func screenOpenMetrica()
-    
-    func screenClosedMetrica()
-    
-    func addTrackerMetrica()
-    
-    func completeTracker()
-    
-    func filterTrackerMetrica()
-    
-    func editTrackerMetrica()
-    
-    func deleteTrackerMetrica()
+//    func screenOpenMetrica()
+//    
+//    func screenClosedMetrica()
+//    
+//    func addTrackerMetrica()
+//    
+//    func completeTracker()
+//    
+//    func filterTrackerMetrica()
+//    
+//    func editTrackerMetrica()
+//    
+//    func deleteTrackerMetrica()
 
 //MARK: - Protocols and extensinons
 
@@ -284,33 +284,33 @@ final class TrackerViewModelMock: TrackerViewModelProtocol, FilterViewController
         metrica.report(event: event, screen: screen, item: item)
     }
     
-    func screenOpenMetrica() {
-        metrica.screenOpen()
-    }
-    
-    func screenClosedMetrica() {
-        metrica.screenClosed()
-    }
-    
-    func addTrackerMetrica() {
-        metrica.addTracker()
-    }
-    
-    func completeTracker() {
-        metrica.completeTracker()
-    }
-    
-    func filterTrackerMetrica() {
-        metrica.filterTracker()
-    }
-    
-    func editTrackerMetrica() {
-        metrica.editTracker()
-    }
-    
-    func deleteTrackerMetrica() {
-        metrica.deleteTracker()
-    }
+//    func screenOpenMetrica() {
+//        metrica.screenOpen()
+//    }
+//    
+//    func screenClosedMetrica() {
+//        metrica.screenClosed()
+//    }
+//    
+//    func addTrackerMetrica() {
+//        metrica.addTracker()
+//    }
+//    
+//    func completeTracker() {
+//        metrica.completeTracker()
+//    }
+//    
+//    func filterTrackerMetrica() {
+//        metrica.filterTracker()
+//    }
+//    
+//    func editTrackerMetrica() {
+//        metrica.editTracker()
+//    }
+//    
+//    func deleteTrackerMetrica() {
+//        metrica.deleteTracker()
+//    }
 }
 
 //MARK: - Protocols and extensinons

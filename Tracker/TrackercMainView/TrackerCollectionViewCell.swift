@@ -16,9 +16,7 @@ protocol TrackerCollectionViewCellProtocol: AnyObject {
 final class TrackerCollectionViewCell: UICollectionViewCell {
     
     var count = 0
-    
     weak var delegate: TrackerCollectionViewCellProtocol?
-    
     var tracker: Tracker?
     var trackerId: UUID?
     var completedDays: Int = 0
@@ -160,7 +158,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
     
     @objc func buttonTapped(){
         if let metrica = metrica {
-            metrica.completeTracker()
+            metrica.report(event: Event.click, screen: Screen.main, item: Item.completeTracker)
         }
         if isCompletedToday {
             UIView.animate(withDuration: 0.2) {

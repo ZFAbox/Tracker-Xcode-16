@@ -214,8 +214,7 @@ final class TrackerViewController: UIViewController{
     }
     
     @objc func addTarget(){
-        viewModel.addTrackerMetrica()
-        print("Добавить цель")
+        viewModel.report(event: Event.click, screen: Screen.main, item: Item.addTracker)
         let viewController = TrackerTypeSelectViewController()
         viewController.viewModel = viewModel
         viewController.delegate = self
@@ -230,7 +229,7 @@ final class TrackerViewController: UIViewController{
     }
     
     @objc func filterButtonTapped(){
-        viewModel.filterTrackerMetrica()
+        viewModel.report(event: Event.click, screen: Screen.main, item: Item.filterTracker)
         let vc = FilterViewController(delegate: viewModel, isFilterSelected: viewModel.isFilterSelected, selectedFilter: viewModel.selectedFilter)
         vc.modalPresentationStyle = .popover
         self.present(vc, animated: true)
@@ -261,13 +260,6 @@ final class TrackerViewController: UIViewController{
         
         trackerCollectionView.isHidden = viewModel.isVisibalteTrackersEmpty()
         filterButton.isHidden = viewModel.isVisibalteTrackersEmpty()
-    }
-    
-    func fontNames(){
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
     }
     
 //MARK: - Add subview and constraints
@@ -560,7 +552,7 @@ extension TrackerViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func removeTracker(indexPath: IndexPath) {
-                viewModel.deleteTrackerMetrica()
+        viewModel.report(event: Event.click, screen: Screen.main, item: Item.deleteTracker)
         if (self.viewModel.numberOfSectionsPinCategory() == 1 ) && (indexPath.section == 0) {
             self.viewModel.removePinTracker(indexPath: indexPath)
         } else {
@@ -569,7 +561,7 @@ extension TrackerViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func editTracker(indexPath: IndexPath, isPined: Bool,tracker: Tracker, category: String, completedDays: Int) {
-        viewModel.editTrackerMetrica()
+        viewModel.report(event: Event.click, screen: Screen.main, item: Item.editTracker)
         if tracker.isRegular {
             let vc = RegularTrackerEditViewController(delegate: viewModel, tracker: tracker, category: category, indexPath: indexPath, isPined: isPined, completedDays: completedDays)
             vc.modalPresentationStyle = .popover

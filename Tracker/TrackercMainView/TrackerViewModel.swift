@@ -152,34 +152,6 @@ class TrackerViewModel: TrackerViewModelProtocol, FilterViewControllerProtocol {
     func report (event: Event, screen: Screen, item: Item?) {
         metrica.report(event: event, screen: screen, item: item)
     }
-    
-    func screenOpenMetrica() {
-        metrica.screenOpen()
-    }
-    
-    func screenClosedMetrica() {
-        metrica.screenClosed()
-    }
-    
-    func addTrackerMetrica() {
-        metrica.addTracker()
-    }
-    
-    func completeTracker() {
-        metrica.completeTracker()
-    }
-    
-    func filterTrackerMetrica() {
-        metrica.filterTracker()
-    }
-    
-    func editTrackerMetrica() {
-        metrica.editTracker()
-    }
-    
-    func deleteTrackerMetrica() {
-        metrica.deleteTracker()
-    }
 }
 
 //MARK: - Protocols and extensinons
