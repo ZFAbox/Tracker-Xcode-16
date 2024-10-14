@@ -165,9 +165,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
                 self.delegate?.uncompleteTracker(id: trackerId, at: indexPath)
                 self.completedDays -= 1
                 self.trackerUndone()
-                
             }
-            
         }else {
             UIView.animate(withDuration: 0.2) {
                 guard let trackerId = self.trackerId, let indexPath = self.indexPath else { return }

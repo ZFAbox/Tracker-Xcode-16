@@ -45,7 +45,7 @@ final class TrackerTableViewController: UIViewController {
         return text
     }()
     
-    lazy var categoriesListTableView: UITableView = {
+    private lazy var categoriesListTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 16
@@ -166,11 +166,11 @@ extension TrackerTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! TrackerCategoriesListCell
-        if cell.checkMark.isHidden == false {
-            cell.checkMark.isHidden = true
+        if !cell.checkMark.isHidden {
+            cell.checkMark.isHidden.toggle()
             trackerCategoriesViewModel.isCategorySelected(isCategorySelected: false, selectedCategory: nil)
         } else {
-            cell.checkMark.isHidden = false
+            cell.checkMark.isHidden.toggle()
             let selectedCategory = cell.categoryName.text
             trackerCategoriesViewModel.isCategorySelected(isCategorySelected: true, selectedCategory: selectedCategory)
             for cellIndex in 0...trackerCategoriesViewModel.count() - 1 {
@@ -207,8 +207,6 @@ extension TrackerTableViewController: UITableViewDelegate {
             self.trackerCategoriesViewModel.removeCategory(at: indexPath)
         }
         
-        
-        
         let cancelAlertButtonText = NSLocalizedString("cancelAlertButtonText", comment: "")
         let cancelButton = UIAlertAction(title: cancelAlertButtonText, style: .cancel) {  _ in
             alert.dismiss(animated: true)
@@ -219,7 +217,8 @@ extension TrackerTableViewController: UITableViewDelegate {
     }
     
     func edit(at indexPath: IndexPath) {
-        let vc = TrackerCategoryEditor(delegate: self, indexPath: indexPath)
+        let selectedCategoryName = trackerCategoriesViewModel.getSelectedCategoryName(at: indexPath)
+        let vc = TrackerCategoryEditor(delegate: self, indexPath: indexPath, categoryName: selectedCategoryName)
         vc.modalPresentationStyle = .popover
         self.present(vc, animated: true)
     }

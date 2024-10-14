@@ -17,7 +17,6 @@ protocol UpdateCategoryListProtocol {
 final class TrackerCategoryCreate: UIViewController {
     
     private var categoryName: String = ""
-    
     private var delegate: UpdateCategoryListProtocol
     
     init(delegate: UpdateCategoryListProtocol) {
@@ -82,7 +81,6 @@ final class TrackerCategoryCreate: UIViewController {
             self.createCategoryButton.isEnabled = !text.isEmpty
             self.createCategoryButton.backgroundColor = text.isEmpty ? .trackerDarkGray : .trackerBlack
         }
-        print("Название категории: \(text)")
     }
 
     @objc func createCategory(){

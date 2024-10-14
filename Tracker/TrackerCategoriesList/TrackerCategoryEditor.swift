@@ -9,13 +9,14 @@ import UIKit
 
 final class TrackerCategoryEditor: UIViewController {
     
-    private var categoryName: String = ""
+    private var categoryName: String
     private var delegate: UpdateCategoryListProtocol
     private var indexPath: IndexPath
     
-    init(delegate: UpdateCategoryListProtocol, indexPath: IndexPath) {
+    init(delegate: UpdateCategoryListProtocol, indexPath: IndexPath, categoryName: String) {
         self.delegate = delegate
         self.indexPath = indexPath
+        self.categoryName = categoryName
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,6 +49,7 @@ final class TrackerCategoryEditor: UIViewController {
         textField.attributedPlaceholder = NSAttributedString(string: categoryEditTextFieldPlaceholderText, attributes:attributes)
         textField.font = UIFont(name: "SFProDisplay-Regular", size: 17)
         textField.backgroundColor = .none
+        textField.text = categoryName
         textField.addTarget(self, action: #selector(inputText(_ :)), for: .allEditingEvents)
         textField.delegate = self
         return textField
