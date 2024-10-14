@@ -257,6 +257,7 @@ final class TrackerViewModelMock: TrackerViewModelProtocol, FilterViewController
         if removeAllTrackers {
             trackerStore.removeAllTrackers()
         } else {
+            trackerStore.removeAllTrackers()
             guard let selectedDate = selectedDate else { return }
             if trackerStore.isVisibalteTrackersEmpty(searchedText: "", currentDate: selectedDate) {
                 let dateFormatter = DateFormatter()
@@ -283,34 +284,6 @@ final class TrackerViewModelMock: TrackerViewModelProtocol, FilterViewController
     func report (event: Event, screen: Screen, item: Item?) {
         metrica.report(event: event, screen: screen, item: item)
     }
-    
-//    func screenOpenMetrica() {
-//        metrica.screenOpen()
-//    }
-//    
-//    func screenClosedMetrica() {
-//        metrica.screenClosed()
-//    }
-//    
-//    func addTrackerMetrica() {
-//        metrica.addTracker()
-//    }
-//    
-//    func completeTracker() {
-//        metrica.completeTracker()
-//    }
-//    
-//    func filterTrackerMetrica() {
-//        metrica.filterTracker()
-//    }
-//    
-//    func editTrackerMetrica() {
-//        metrica.editTracker()
-//    }
-//    
-//    func deleteTrackerMetrica() {
-//        metrica.deleteTracker()
-//    }
 }
 
 //MARK: - Protocols and extensinons

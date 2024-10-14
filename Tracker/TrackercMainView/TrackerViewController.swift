@@ -16,7 +16,7 @@ final class TrackerViewController: UIViewController{
     
 //MARK: - Views
 
-    private lazy var addTracckerButton: UIButton = {
+    private lazy var addTrackerButton: UIButton = {
         let button = UIButton()
         let image = UIImage(named: "Tracker Add Plus")
         button.setImage(image, for: .normal)
@@ -147,12 +147,10 @@ final class TrackerViewController: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        viewModel.screenOpenMetrica()
         viewModel.report(event: Event.open, screen: Screen.main, item: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-//        viewModel.screenClosedMetrica()
         viewModel.report(event: Event.close, screen: Screen.main, item: nil)
     }
     
@@ -273,7 +271,7 @@ final class TrackerViewController: UIViewController{
         view.addSubview(filterButton)
         view.addSubview(datePicker)
         view.addSubview(datePickerLable)
-        view.addSubview(addTracckerButton)
+        view.addSubview(addTrackerButton)
     }
     
     private func setDummySublayers(){
@@ -318,10 +316,10 @@ final class TrackerViewController: UIViewController{
     
     private func setAddTrackerButtonConstraints() {
         NSLayoutConstraint.activate([
-        addTracckerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 49),
-        addTracckerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-        addTracckerButton.heightAnchor.constraint(equalToConstant: 18),
-        addTracckerButton.widthAnchor.constraint(equalToConstant: 18)
+        addTrackerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 49),
+        addTrackerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+        addTrackerButton.heightAnchor.constraint(equalToConstant: 18),
+        addTrackerButton.widthAnchor.constraint(equalToConstant: 18)
         ])
     }
     
@@ -429,7 +427,6 @@ extension TrackerViewController: UICollectionViewDataSource {
             if id == "header" {
                 let headerTitleText = viewModel.headerPinTitle(for: indexPath)
                 headerView.titleLable.text = headerTitleText
-                print(headerTitleText)
             } else {
                 headerView.titleLable.text = ""
             }
@@ -437,7 +434,6 @@ extension TrackerViewController: UICollectionViewDataSource {
             if id == "header" {
                 let headerTitleText = viewModel.headerTitle(for: IndexPath(row: indexPath.row, section: indexPath.section - viewModel.numberOfSectionsPinCategory()))
                 headerView.titleLable.text = headerTitleText
-                print(headerTitleText)
             } else {
                 headerView.titleLable.text = ""
             }
@@ -452,7 +448,6 @@ extension TrackerViewController: UICollectionViewDelegateFlowLayout {
         let height = CGFloat(trackerCellParameters.height)
         let width = (CGFloat(collectionView.frame.width) - CGFloat((trackerCellParameters.numberOfCellsInRow - 1)*trackerCellParameters.horizontalSpacing)) / CGFloat(trackerCellParameters.numberOfCellsInRow)
         let size = CGSize(width: width, height: height)
-        
         return size
     }
     

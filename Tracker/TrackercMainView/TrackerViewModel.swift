@@ -284,7 +284,6 @@ extension TrackerViewModel {
                 }
             }
         }
-        print (perfectDates)
         if perfectDates.count == 0 {
             return 0
         } else if perfectDates.count == 1 {

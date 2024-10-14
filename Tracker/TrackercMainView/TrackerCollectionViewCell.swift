@@ -153,7 +153,6 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
             dayMarkButton.isEnabled = false
             trackerDone()
         }
-        
     }
     
     @objc func buttonTapped(){

@@ -25,7 +25,6 @@ final class TrackerCategoryEditor: UIViewController {
     
     private lazy var titleLable: UILabel = {
         let titleLable = UILabel()
-//        titleLable.translatesAutoresizingMaskIntoConstraints = false
         let categoryEditTitleText = NSLocalizedString("categoryEditTitleText", comment: "")
         titleLable.text = categoryEditTitleText
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
@@ -34,7 +33,6 @@ final class TrackerCategoryEditor: UIViewController {
     
     private lazy var layerTextFieldView: UIView = {
         let layerTextFieldView = UIView()
-//        layerTextFieldView.translatesAutoresizingMaskIntoConstraints = false
         layerTextFieldView.backgroundColor = .trackerBackgroundOpacityGray
         layerTextFieldView.layer.cornerRadius = 16
         return layerTextFieldView
@@ -42,7 +40,6 @@ final class TrackerCategoryEditor: UIViewController {
     
     private lazy var categoryNameTextField: UITextField = {
         let textField = UITextField()
-//        textField.translatesAutoresizingMaskIntoConstraints = false
         let attributes = [
             NSAttributedString.Key.foregroundColor: UIColor.rgbColors(red: 174, green: 175, blue: 180, alpha: 1),
             NSAttributedString.Key.font : UIFont(name: "SFProDisplay-Regular", size: 17)!
@@ -58,7 +55,6 @@ final class TrackerCategoryEditor: UIViewController {
     
     private lazy var createCategoryButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 16
         let confirmEditButtonText = NSLocalizedString("confirmEditButtonText", comment: "")
         button.setTitle( confirmEditButtonText, for: .normal)
@@ -76,7 +72,6 @@ final class TrackerCategoryEditor: UIViewController {
             self.createCategoryButton.isEnabled = !text.isEmpty
             self.createCategoryButton.backgroundColor = text.isEmpty ? .trackerDarkGray : .trackerBlack
         }
-        print("Название категории: \(text)")
     }
 
     @objc func createCategory(){
@@ -97,10 +92,6 @@ final class TrackerCategoryEditor: UIViewController {
             subView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(subView)
         }
-//        view.addSubview(titleLable)
-//        view.addSubview(createCategoryButton)
-//        view.addSubview(layerTextFieldView)
-//        view.addSubview(categoryNameTextField)
     }
     
     private func setConstraints(){

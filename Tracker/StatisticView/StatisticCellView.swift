@@ -12,7 +12,6 @@ final class StatisticCellView: UITableViewCell {
     
     lazy var statisticCountValue: UILabel = {
         let lable = UILabel()
-//        lable.translatesAutoresizingMaskIntoConstraints = false
         lable.font = UIFont(name: "SFProDisplay-Bold", size: 34)
         lable.text = "1"
         lable.textColor = .trackerBlack
@@ -23,14 +22,12 @@ final class StatisticCellView: UITableViewCell {
         let lable = UILabel()
         lable.font = UIFont(name: "SFProDisplay-Medium", size: 12)
         lable.text = ""
-//        lable.translatesAutoresizingMaskIntoConstraints = false
         lable.textColor = .trackerBlack
         return lable
     }()
     
     private lazy var gradientView: UIView = {
         let view = UIView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
         return view
@@ -38,7 +35,6 @@ final class StatisticCellView: UITableViewCell {
     
     private lazy var textView: UIView = {
         let view = UIView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .trackerWhite
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
@@ -86,10 +82,6 @@ final class StatisticCellView: UITableViewCell {
             subView.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(subView)
         }
-//        contentView.addSubview(gradientView)
-//        contentView.addSubview(textView)
-//        contentView.addSubview(statisticSectionName)
-//        contentView.addSubview(statisticCountValue)
     }
     
     private func setConstraints(){
