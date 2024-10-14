@@ -72,6 +72,7 @@
 		903398E02CB9C84B00F05A63 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 903398DF2CB9C84B00F05A63 /* SnapshotTesting */; };
 		90D928A02CB9D8B900E3B830 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 90D9289E2CB9D8B900E3B830 /* Localizable.stringsdict */; };
 		90D928A32CB9EB0F00E3B830 /* Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D928A22CB9EB0F00E3B830 /* Weekdays.swift */; };
+		9F9EAEE82CBD1D1A00C1A08B /* Metrica Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAEE72CBD1D1900C1A08B /* Metrica Parameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,7 @@
 		9F8C90B32CB90735008879D9 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C90C92CB90737008879D9 /* TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C90D32CB90737008879D9 /* TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9EAEE72CBD1D1900C1A08B /* Metrica Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metrica Parameters.swift"; sourceTree = "<group>"; };
 		F9EE6C8ADABF10A949B0945B /* Pods-Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tracker.release.xcconfig"; path = "Target Support Files/Pods-Tracker/Pods-Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				900AB36A2CB9CC7B00A28B12 /* Metrica.swift */,
+				9F9EAEE72CBD1D1900C1A08B /* Metrica Parameters.swift */,
 			);
 			path = Metrica;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				900AB3B22CB9CC7B00A28B12 /* TabBarViewController.swift in Sources */,
 				900AB3B32CB9CC7B00A28B12 /* TrackerTypeSelectViewController.swift in Sources */,
 				900AB3B42CB9CC7B00A28B12 /* TrackerCategoryEditor.swift in Sources */,
+				9F9EAEE82CBD1D1A00C1A08B /* Metrica Parameters.swift in Sources */,
 				900AB3B62CB9CC7B00A28B12 /* FilterViewController.swift in Sources */,
 				900AB3B82CB9CC7B00A28B12 /* TrackerSupplementaryViewCell.swift in Sources */,
 				900AB3B92CB9CC7B00A28B12 /* TrackerViewController.swift in Sources */,

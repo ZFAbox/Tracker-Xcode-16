@@ -10,6 +10,18 @@ import YandexMobileMetrica
 
 final class Metrica {
     
+    func report (event: Event, screen: Screen, item: Item? ) {
+        var params: [AnyHashable : Any] = [ : ]
+        if let item = item {
+            params = ["event": event.rawValue, "screen": screen.rawValue, "item": item.rawValue]
+        } else {
+            params = ["event": event.rawValue, "screen": screen.rawValue]
+        }
+        YMMYandexMetrica.reportEvent("open_main", parameters: params, onFailure: { error in
+            print("REPORT ERROR: %@", error.localizedDescription)
+        })
+    }
+    
     func screenOpen(){
         let params : [AnyHashable : Any] = ["event": "open", "screen": "Main"]
         YMMYandexMetrica.reportEvent("open_main", parameters: params, onFailure: { error in
@@ -51,7 +63,6 @@ final class Metrica {
             print("REPORT ERROR: %@", error.localizedDescription)
         })
     }
-    
     
     func deleteTracker(){
         let params : [AnyHashable : Any] = ["event": "click", "screen": "Main", "item": "delete"]

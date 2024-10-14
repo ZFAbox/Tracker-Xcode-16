@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class TrackerViewModel: TrackerViewModelProtocol, FilterViewControllerProtocol {
+class TrackerViewModel: TrackerViewModelProtocol, FilterViewControllerProtocol {
     
     var todayDate: Date? {
         didSet {
@@ -148,6 +148,10 @@ final class TrackerViewModel: TrackerViewModelProtocol, FilterViewControllerProt
 
     
     //MARK: - Metrica Methods
+    
+    func report (event: Event, screen: Screen, item: Item?) {
+        metrica.report(event: event, screen: screen, item: item)
+    }
     
     func screenOpenMetrica() {
         metrica.screenOpen()

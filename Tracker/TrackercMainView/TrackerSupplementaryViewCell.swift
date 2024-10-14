@@ -10,8 +10,6 @@ import UIKit
 
 final class TrackerSupplementaryViewCell: UICollectionReusableView {
     
-    
-    
     var titleLable: UILabel = {
         let titleLable = UILabel()
         titleLable.translatesAutoresizingMaskIntoConstraints = false

@@ -59,6 +59,8 @@ protocol TrackerViewModelProtocol: FilterViewControllerProtocol, TrackerStoreUpd
     
     //MARK: - Metrica Methods
     
+    func report(event: Event, screen: Screen, item: Item?)
+    
     func screenOpenMetrica()
     
     func screenClosedMetrica()
@@ -278,6 +280,10 @@ final class TrackerViewModelMock: TrackerViewModelProtocol, FilterViewController
     
     //MARK: - Metrica Methods
     
+    func report (event: Event, screen: Screen, item: Item?) {
+        metrica.report(event: event, screen: screen, item: item)
+    }
+    
     func screenOpenMetrica() {
         metrica.screenOpen()
     }
@@ -470,4 +476,3 @@ extension TrackerViewModelMock {
         return period
     }
 }
-

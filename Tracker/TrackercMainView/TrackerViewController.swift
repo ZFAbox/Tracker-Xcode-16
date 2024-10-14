@@ -12,7 +12,6 @@ final class TrackerViewController: UIViewController{
 //MARK: - Constants
     
     var viewModel: TrackerViewModelProtocol
-    
     private var trackerCellParameters = TrackerCellPrameters(numberOfCellsInRow: 2, height: 148, horizontalSpacing: 10, verticalSpacing: 0)
     
 //MARK: - Views
@@ -148,11 +147,13 @@ final class TrackerViewController: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.screenOpenMetrica()
+//        viewModel.screenOpenMetrica()
+        viewModel.report(event: Event.open, screen: Screen.main, item: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        viewModel.screenClosedMetrica()
+//        viewModel.screenClosedMetrica()
+        viewModel.report(event: Event.close, screen: Screen.main, item: nil)
     }
     
     override func viewDidLoad() {
