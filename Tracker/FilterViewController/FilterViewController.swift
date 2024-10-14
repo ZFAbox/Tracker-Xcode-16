@@ -33,7 +33,6 @@ final class FilterViewController: UIViewController {
     
     private lazy var titleLable: UILabel = {
         let titleLable = UILabel()
-        titleLable.translatesAutoresizingMaskIntoConstraints = false
         let filterTitle = NSLocalizedString("filterTitle", comment: "")
         titleLable.text = filterTitle
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
@@ -42,7 +41,6 @@ final class FilterViewController: UIViewController {
     
     private lazy var filtertTableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 16
         tableView.backgroundColor = .trackerWhite
         tableView.dataSource = self
@@ -53,15 +51,11 @@ final class FilterViewController: UIViewController {
         return tableView
     }()
     
-    
-  
-    
     init(delegate: FilterViewControllerProtocol, isFilterSelected: Bool, selectedFilter: String) {
         self.delegate = delegate
         self.isFilterSelected = isFilterSelected
         self.selectedFilter = selectedFilter
         super .init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -73,7 +67,6 @@ final class FilterViewController: UIViewController {
         view.backgroundColor = .trackerWhite
         addSubviews()
         setConstrints()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,8 +79,10 @@ final class FilterViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(titleLable)
-        view.addSubview(filtertTableView)
+        [titleLable, filtertTableView].forEach { subView in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(subView)
+        }
     }
     
     private func setConstrints() {

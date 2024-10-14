@@ -18,11 +18,11 @@ final class ScheduleViewController: UIViewController {
 
     private var trackerSchedule: [String] = []
     private var scheduleSubtitle: [String] = []
-    var delegate: ScheduleViewControllerProtocol //RegularTrackerCreateViewController?
+    var delegate: ScheduleViewControllerProtocol
     
     private lazy var titleLable: UILabel = {
         let titleLable = UILabel()
-        titleLable.translatesAutoresizingMaskIntoConstraints = false
+//        titleLable.translatesAutoresizingMaskIntoConstraints = false
         let scheduleTitle = NSLocalizedString("scheduleTitle", comment: "")
         titleLable.text = scheduleTitle
         titleLable.tintColor = .trackerBlack
@@ -32,7 +32,7 @@ final class ScheduleViewController: UIViewController {
     
     private lazy var scheduleTableView: UITableView = {
         let table = UITableView()
-        table.translatesAutoresizingMaskIntoConstraints = false
+//        table.translatesAutoresizingMaskIntoConstraints = false
         table.layer.cornerRadius = 16
         table.backgroundColor = .trackerWhite
         table.dataSource = self
@@ -48,7 +48,7 @@ final class ScheduleViewController: UIViewController {
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 16
         let confirmScheduleButtonText = NSLocalizedString("confirmScheduleButtonText", comment: "")
         button.setTitle(confirmScheduleButtonText, for: .normal)
@@ -83,9 +83,13 @@ final class ScheduleViewController: UIViewController {
     }
     
     private func addSubviews(){
-        view.addSubview(titleLable)
-        view.addSubview(scheduleTableView)
-        view.addSubview(confirmButton)
+        [titleLable, scheduleTableView, confirmButton].forEach { subView in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(subView)
+        }
+//        view.addSubview(titleLable)
+//        view.addSubview(scheduleTableView)
+//        view.addSubview(confirmButton)
     }
     
     private func setConstraints(){
@@ -130,38 +134,6 @@ extension ScheduleViewController: UITableViewDataSource {
         return cell
     }
     
-//    func configureCell(_ cell:UITableViewCell, at indexPath: IndexPath){
-//        cell.textLabel?.text = Weekdays.weekdayForIndex(at: indexPath.row).localized
-//        let switcher = UISwitch(frame: .zero)
-//        switcher.setOn(false, animated: true)
-//        switcher.tag = indexPath.row
-//        switcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
-//        switcher.onTintColor = .trackerBlue
-//        cell.accessoryView = switcher
-//        cell.backgroundColor = .trackerBackgroundOpacityGray
-//    }
-//    
-//    @objc func switchChanged(_ sender: UISwitch){
-//        if sender.isOn {
-//            let weekday = Weekdays.weekdayForIndex(at: sender.tag)
-//            trackerSchedule.append( weekday.localized)
-//            print("Добален день недели \(weekday.localized)")
-//            scheduleSubtitle.append(Weekdays.shortWeekdayDescription(weekday: weekday))
-//            scheduleSubtitle = scheduleSubtitle.reorder(by: Weekdays.scheduleSubtitlesArray)
-//            print(scheduleSubtitle)
-//        } else {
-//            trackerSchedule.removeAll { weekday in
-//                weekday == Weekdays.weekdayForIndex(at: sender.tag).localized
-//            }
-//            scheduleSubtitle.removeAll { subtitle in
-//                subtitle == Weekdays.scheduleSubtitlesArray[sender.tag]
-//            }
-//            print("Удален день недели \(Weekdays.weekdayForIndex(at: sender.tag).localized)")
-//        }
-//        print(trackerSchedule)
-//        sender.isEnabled = true
-//    }
-    
     func configureCell(_ cell:UITableViewCell, at indexPath: IndexPath){
         cell.textLabel?.text = Weekdays.weekdayForIndex(at: indexPath.row).localized
         let switcher = UISwitch(frame: .zero)
@@ -177,10 +149,8 @@ extension ScheduleViewController: UITableViewDataSource {
         if sender.isOn {
             let weekdayNumber = sender.tag + 1
             trackerSchedule.append( String(weekdayNumber))
-            print("Добален день недели с номером: \(weekdayNumber)")
             scheduleSubtitle.append(Weekdays.shortWeekdayDescription(weekdayNumber: weekdayNumber))
             scheduleSubtitle = scheduleSubtitle.reorder(by: Weekdays.scheduleSubtitlesArray)
-            print("Упорядоченное расписание: \(scheduleSubtitle)")
         } else {
             trackerSchedule.removeAll { weekdayNumber in
                 let removedWeekdayNumber = String(sender.tag + 1)
@@ -189,7 +159,6 @@ extension ScheduleViewController: UITableViewDataSource {
             scheduleSubtitle.removeAll { subtitle in
                 subtitle == Weekdays.scheduleSubtitlesArray[sender.tag]
             }
-            print("Удален день недели: \(Weekdays.weekdayForIndex(at: (sender.tag)).localized)")
         }
         print(trackerSchedule)
         sender.isEnabled = true

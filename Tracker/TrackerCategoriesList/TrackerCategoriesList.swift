@@ -20,7 +20,7 @@ final class TrackerCategoriesList: UIViewController {
     
     private lazy var titleLable: UILabel = {
         let titleLable = UILabel()
-        titleLable.translatesAutoresizingMaskIntoConstraints = false
+//        titleLable.translatesAutoresizingMaskIntoConstraints = false
         let categoryListTitle = NSLocalizedString("categoryListTitle", comment: "")
         titleLable.text = categoryListTitle
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
@@ -29,7 +29,7 @@ final class TrackerCategoriesList: UIViewController {
     
     private lazy var createCategoryButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 16
         let createCategoryButtonText = NSLocalizedString("createCategoryButtonText", comment: "")
         button.setTitle(createCategoryButtonText, for: .normal)
@@ -70,8 +70,12 @@ final class TrackerCategoriesList: UIViewController {
     }
         
     private func addSubviews(){
-        view.addSubview(titleLable)
-        view.addSubview(createCategoryButton)
+        [titleLable, createCategoryButton].forEach { subView in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(subView)
+        }
+//        view.addSubview(titleLable)
+//        view.addSubview(createCategoryButton)
     }
     
     private func setConstraints(){

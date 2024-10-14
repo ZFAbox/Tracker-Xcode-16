@@ -12,7 +12,7 @@ final class FilterTableViewCell: UITableViewCell {
     
     private lazy var filterName: UILabel = {
         let lable = UILabel()
-        lable.translatesAutoresizingMaskIntoConstraints = false
+//        lable.translatesAutoresizingMaskIntoConstraints = false
         lable.text = "Категория"
         lable.textColor = .trackerBlack
         lable.font = UIFont(name: "SFProDisplay-Regular", size: 17)
@@ -22,14 +22,14 @@ final class FilterTableViewCell: UITableViewCell {
     private lazy var checkMark: UIImageView = {
         let  image = UIImage(named: "Check Mark")
         let  imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .trackerBlue
         return imageView
     }()
     
     private lazy var separatorView: UIView = {
         let separator = UIView()
-        separator.translatesAutoresizingMaskIntoConstraints = false
+//        separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = .trackerDarkGrayOpacity70
         return separator
     }()
@@ -66,9 +66,13 @@ final class FilterTableViewCell: UITableViewCell {
     }
     
     private func addSubiews(){
-        contentView.addSubview(filterName)
-        contentView.addSubview(separatorView)
-        contentView.addSubview(checkMark)
+        [filterName, separatorView, checkMark].forEach { subView in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(subView)
+        }
+//        contentView.addSubview(filterName)
+//        contentView.addSubview(separatorView)
+//        contentView.addSubview(checkMark)
     }
     
     private func setConstraints(){

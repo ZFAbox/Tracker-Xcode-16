@@ -12,7 +12,7 @@ final class TrackerCategoriesListCell: UITableViewCell {
     
     lazy var categoryName: UILabel = {
         let lable = UILabel()
-        lable.translatesAutoresizingMaskIntoConstraints = false
+//        lable.translatesAutoresizingMaskIntoConstraints = false
         lable.text = "Категория"
         lable.textColor = .trackerBlack
         lable.font = UIFont(name: "SFProDisplay-Regular", size: 17)
@@ -22,14 +22,14 @@ final class TrackerCategoriesListCell: UITableViewCell {
     lazy var checkMark: UIImageView = {
         let  image = UIImage(named: "Check Mark")
         let  imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .trackerBlue
         return imageView
     }()
     
     lazy var separatorView: UIView = {
         let separator = UIView()
-        separator.translatesAutoresizingMaskIntoConstraints = false
+//        separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = .trackerDarkGrayOpacity70
         return separator
     }()
@@ -46,9 +46,13 @@ final class TrackerCategoriesListCell: UITableViewCell {
     }
     
     func addSubiews(){
-        contentView.addSubview(categoryName)
-        contentView.addSubview(separatorView)
-        contentView.addSubview(checkMark)
+        [categoryName, separatorView, checkMark].forEach { subView in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(subView)
+        }
+//        contentView.addSubview(categoryName)
+//        contentView.addSubview(separatorView)
+//        contentView.addSubview(checkMark)
     }
     
     func setConstraints(){

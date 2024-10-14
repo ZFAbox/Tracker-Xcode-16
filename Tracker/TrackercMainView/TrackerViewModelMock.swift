@@ -10,13 +10,9 @@ import Foundation
 protocol TrackerViewModelProtocol: FilterViewControllerProtocol, TrackerStoreUpdateDelegateProtocol, TrackerCreateViewControllerProtocol, TrackerUpdateViewControllerProtocol, TrackerStoreUpdateDelegateProtocol, TrackerCollectionViewCellProtocol {
     
     var todayDate: Date? { get set }
-    
     var selectedDate: Date? { get set }
-    
     var searchedText: String { get set }
-    
     var isFilterSelected: Bool { get set }
-    
     var selectedFilter: String { get set }
     
     //MARK: - Bindings
