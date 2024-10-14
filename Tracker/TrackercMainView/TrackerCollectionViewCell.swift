@@ -13,12 +13,10 @@ protocol TrackerCollectionViewCellProtocol: AnyObject {
     func uncompleteTracker(id: UUID, at indexPath: IndexPath)
 }
 
-class TrackerCollectionViewCell: UICollectionViewCell {
+final class TrackerCollectionViewCell: UICollectionViewCell {
     
     var count = 0
-    
     weak var delegate: TrackerCollectionViewCellProtocol?
-    
     var tracker: Tracker?
     var trackerId: UUID?
     var completedDays: Int = 0
@@ -143,14 +141,6 @@ class TrackerCollectionViewCell: UICollectionViewCell {
             trackerUndone()
         }
         
-        if !tracker.isRegular && isCompletedBefore {
-            dayMarkButton.isEnabled = false
-            trackerDone()
-        }
-        else {
-            dayMarkButton.isEnabled = true
-        }
-        
         if let date = currentDate {
             if date > Date(){
                 dayMarkButton.isEnabled = false
@@ -158,11 +148,16 @@ class TrackerCollectionViewCell: UICollectionViewCell {
                 dayMarkButton.isEnabled = true
             }
         }
+        
+        if (!tracker.isRegular) && isCompletedBefore {
+            dayMarkButton.isEnabled = false
+            trackerDone()
+        }
     }
     
     @objc func buttonTapped(){
         if let metrica = metrica {
-            metrica.completeTracker()
+            metrica.report(event: Event.click, screen: Screen.main, item: Item.completeTracker)
         }
         if isCompletedToday {
             UIView.animate(withDuration: 0.2) {
@@ -170,9 +165,7 @@ class TrackerCollectionViewCell: UICollectionViewCell {
                 self.delegate?.uncompleteTracker(id: trackerId, at: indexPath)
                 self.completedDays -= 1
                 self.trackerUndone()
-                
             }
-            
         }else {
             UIView.animate(withDuration: 0.2) {
                 guard let trackerId = self.trackerId, let indexPath = self.indexPath else { return }

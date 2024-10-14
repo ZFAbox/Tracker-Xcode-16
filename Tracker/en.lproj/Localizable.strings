@@ -66,6 +66,7 @@ Created by Fedor Zavyalov on 02.09.2024.
 
 "createButtonText" = "Create";
 "cancelButtonText" = "Cancel";
+"saveButtonText" = "Save";
 
 //MARK: - TrackerCategoriesList
 

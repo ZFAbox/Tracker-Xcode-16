@@ -66,7 +66,6 @@ final class TrackerTypeSelectViewController: UIViewController {
     }
     
     @objc func habbitButtonTapped(){
-        //TODO: - move to habbit screen
         let viewController = RegularTrackerCreateViewController(regular: true, trackerTypeSelectViewController: self)
         viewController.delegate = viewModel
         viewController.modalPresentationStyle = .popover
@@ -74,7 +73,6 @@ final class TrackerTypeSelectViewController: UIViewController {
     }
     
     @objc func notRegularButtonTapped(){
-        //TODO: - move to notRegular screen
         let viewController = NotRegularTrackerCreateViewController(regular: false, trackerTypeSelectViewController: self)
         viewController.delegate = viewModel
         viewController.modalPresentationStyle = .popover

@@ -102,6 +102,12 @@ final class TrackerCategoryStore: NSObject{
         try? fetchResultController.performFetch()
     }
     
+    func getCategoryName(at indexPath: IndexPath) -> String {
+        let categoryCoreData = fetchResultController.object(at: indexPath)
+        guard let categoryName = categoryCoreData.categoryName else { return "" }
+        return categoryName
+    }
+    
     func isEmpty() -> Bool {
         let fetchRequest = fetchResultController.fetchRequest
         guard let categoryCoreData = try? context.fetch(fetchRequest) else { return true }

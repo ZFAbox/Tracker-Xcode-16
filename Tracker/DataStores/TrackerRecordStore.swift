@@ -84,18 +84,18 @@ final class TrackerRecordStore{
             return count.finalResult?.first as! Int
         } else { return 0 }
     }
-    
-    func isEverCompleted(id: UUID, currentDate: Date) -> Bool{
-        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
-        var trackerRecordFound = false
-        request.predicate = NSPredicate(format: "%K == %@ AND %K < %@", #keyPath(TrackerRecordCoreData.trackerId), id as NSUUID, #keyPath(TrackerRecordCoreData.trackerDate), currentDate as NSDate)
-        if (try? context.fetch(request).isEmpty) != nil {
-            trackerRecordFound = false
-        } else {
-            trackerRecordFound = true
-        }
-        return trackerRecordFound
-    }
+//    
+//    func isEverCompleted(id: UUID, currentDate: Date) -> Bool{
+//        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
+//        var trackerRecordFound = false
+//        request.predicate = NSPredicate(format: "%K == %@ AND %K < %@", #keyPath(TrackerRecordCoreData.trackerId), id as NSUUID, #keyPath(TrackerRecordCoreData.trackerDate), currentDate as NSDate)
+//        if let result = try? context.fetch(request).isEmpty {
+//            trackerRecordFound = false
+//        } else {
+//            trackerRecordFound = true
+//        }
+//        return trackerRecordFound
+//    }
     
     func calculateTrackersCompleted() -> Int {
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")

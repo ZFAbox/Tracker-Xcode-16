@@ -33,7 +33,6 @@ final class FilterViewController: UIViewController {
     
     private lazy var titleLable: UILabel = {
         let titleLable = UILabel()
-        titleLable.translatesAutoresizingMaskIntoConstraints = false
         let filterTitle = NSLocalizedString("filterTitle", comment: "")
         titleLable.text = filterTitle
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
@@ -42,7 +41,6 @@ final class FilterViewController: UIViewController {
     
     private lazy var filtertTableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 16
         tableView.backgroundColor = .trackerWhite
         tableView.dataSource = self
@@ -53,15 +51,11 @@ final class FilterViewController: UIViewController {
         return tableView
     }()
     
-    
-  
-    
     init(delegate: FilterViewControllerProtocol, isFilterSelected: Bool, selectedFilter: String) {
         self.delegate = delegate
         self.isFilterSelected = isFilterSelected
         self.selectedFilter = selectedFilter
         super .init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -73,7 +67,6 @@ final class FilterViewController: UIViewController {
         view.backgroundColor = .trackerWhite
         addSubviews()
         setConstrints()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,8 +79,10 @@ final class FilterViewController: UIViewController {
     }
     
     private func addSubviews() {
-        view.addSubview(titleLable)
-        view.addSubview(filtertTableView)
+        [titleLable, filtertTableView].forEach { subView in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(subView)
+        }
     }
     
     private func setConstrints() {
@@ -119,18 +114,11 @@ extension FilterViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterTableViewCell
-        cell.filterName.text = filters[indexPath.row]
+        let filterNameText = filters[indexPath.row]
+        cell.setFilterNameText(filterNameText)
         cell.backgroundColor = .trackerBackgroundOpacityGray
-        if (isFilterSelected == true) && (filters[indexPath.row] == selectedFilter) {
-            cell.checkMark.isHidden = false
-        } else {
-            cell.checkMark.isHidden = true
-        }
-        if indexPath.row == filters.count - 1 {
-            cell.separatorView.isHidden = true
-        } else {
-            cell.separatorView.isHidden = false
-        }
+        cell.checkMarkIsHidden(!((isFilterSelected == true) && (filters[indexPath.row] == selectedFilter)))
+        cell.separateViewIsHidden(indexPath.row == filters.count - 1)
         return cell
     }
 }
@@ -140,18 +128,18 @@ extension FilterViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! FilterTableViewCell
-        if cell.checkMark.isHidden == false {
-            cell.checkMark.isHidden = true
+        if !cell.isCheckMarkHidden()  {
+            cell.checkMarkIsHidden(true)
             isFilterSelected = false
             selectedFilter = ""
         } else {
-            cell.checkMark.isHidden = false
-            selectedFilter = cell.filterName.text ?? ""
+            cell.checkMarkIsHidden(false)
+            selectedFilter = cell.getFilterNameText()
             isFilterSelected = true
             for cellIndex in 0...filters.count - 1 {
                 if cellIndex != indexPath.row {
                     let otherCell = tableView.cellForRow(at: IndexPath(row: cellIndex, section: 0)) as! FilterTableViewCell
-                    otherCell.checkMark.isHidden = true
+                    otherCell.checkMarkIsHidden(true)
                 }
             }
         }
