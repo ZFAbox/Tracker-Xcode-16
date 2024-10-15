@@ -48,17 +48,17 @@ final class TrackerRecordStore{
         }
         saveTrackerRecord()
     }
-    
-    func loadTrackerRecords() -> [TrackerRecord]{
-        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
-        guard let trackerRecordsData = try? context.fetch(request) else { return [] }
-        var trackerRecords: [TrackerRecord] = []
-        trackerRecordsData.forEach { trackerRecordData in
-            let trackerRecord = TrackerRecord(trackerId: trackerRecordData.trackerId ?? UUID(), trackerDate: trackerRecordData.trackerDate ?? Date())
-            trackerRecords.append(trackerRecord)
-        }
-        return trackerRecords
-    }
+//    
+//    func loadTrackerRecords() -> [TrackerRecord]{
+//        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
+//        guard let trackerRecordsData = try? context.fetch(request) else { return [] }
+//        var trackerRecords: [TrackerRecord] = []
+//        trackerRecordsData.forEach { trackerRecordData in
+//            let trackerRecord = TrackerRecord(trackerId: trackerRecordData.trackerId ?? UUID(), trackerDate: trackerRecordData.trackerDate ?? Date())
+//            trackerRecords.append(trackerRecord)
+//        }
+//        return trackerRecords
+//    }
     
     func isCompletedTrackerRecords(id: UUID, date: Date) -> Bool{
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
@@ -84,18 +84,6 @@ final class TrackerRecordStore{
             return count.finalResult?.first as! Int
         } else { return 0 }
     }
-//    
-//    func isEverCompleted(id: UUID, currentDate: Date) -> Bool{
-//        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
-//        var trackerRecordFound = false
-//        request.predicate = NSPredicate(format: "%K == %@ AND %K < %@", #keyPath(TrackerRecordCoreData.trackerId), id as NSUUID, #keyPath(TrackerRecordCoreData.trackerDate), currentDate as NSDate)
-//        if let result = try? context.fetch(request).isEmpty {
-//            trackerRecordFound = false
-//        } else {
-//            trackerRecordFound = true
-//        }
-//        return trackerRecordFound
-//    }
     
     func calculateTrackersCompleted() -> Int {
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
