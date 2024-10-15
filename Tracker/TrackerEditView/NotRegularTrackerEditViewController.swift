@@ -669,15 +669,21 @@ extension NotRegularTrackerEditViewController: UITextViewDelegate {
         
         trackerName = text
         textView.text = text
-        
+    
         if text != "" {
             UIView.animate(withDuration: 0.3) { [self] in
                 self.placeholderLableView.isHidden = true
                 if trackerName.count <= 38 {
+                    UIView.animate(withDuration: 0.3) {
+                        self.textFieldLimitationMessage.layer.opacity = 0
+                    }
                     self.textFieldLimitationMessage.removeFromSuperview()
                 } else {
                     trackerNameTextField.text = String(trackerName.dropLast())
                     self.textFieldVStack.addArrangedSubview(textFieldLimitationMessage)
+                    UIView.animate(withDuration: 0.3) {
+                        self.textFieldLimitationMessage.layer.opacity = 1
+                    }
                 }
                 if isEnterButtonTapped {
                     hideClearButton()
