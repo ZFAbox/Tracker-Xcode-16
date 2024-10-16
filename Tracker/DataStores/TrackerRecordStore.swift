@@ -48,17 +48,6 @@ final class TrackerRecordStore{
         }
         saveTrackerRecord()
     }
-//    
-//    func loadTrackerRecords() -> [TrackerRecord]{
-//        let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")
-//        guard let trackerRecordsData = try? context.fetch(request) else { return [] }
-//        var trackerRecords: [TrackerRecord] = []
-//        trackerRecordsData.forEach { trackerRecordData in
-//            let trackerRecord = TrackerRecord(trackerId: trackerRecordData.trackerId ?? UUID(), trackerDate: trackerRecordData.trackerDate ?? Date())
-//            trackerRecords.append(trackerRecord)
-//        }
-//        return trackerRecords
-//    }
     
     func isCompletedTrackerRecords(id: UUID, date: Date) -> Bool{
         let request = NSFetchRequest<TrackerRecordCoreData>(entityName: "TrackerRecordCoreData")

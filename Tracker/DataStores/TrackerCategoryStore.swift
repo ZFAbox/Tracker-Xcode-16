@@ -25,8 +25,7 @@ final class TrackerCategoryStore: NSObject{
         self.context = context
         self.delegate = delegate
     }
-    
-    
+
     convenience init(delegate: TrackerCategoryStoreProtocol) {
         self.init(context: DataStore.shared.viewContext, delegate: delegate)
     }
@@ -133,7 +132,6 @@ final class TrackerCategoryStore: NSObject{
         }
         return categories.count
     }
-
 }
 
 extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
