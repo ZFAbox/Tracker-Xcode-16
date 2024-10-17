@@ -22,7 +22,7 @@ final class TrackerTypeSelectViewController: UIViewController {
     private lazy var titleLable: UILabel = {
         let titleLable = UILabel()
         titleLable.translatesAutoresizingMaskIntoConstraints = false
-        let trackerTypeSelectTitle = NSLocalizedString("trackerTypeSelectTitle", comment: "Tracker type select screen title")
+        let trackerTypeSelectTitle = L10n.trackerTypeSelectTitle
         titleLable.text = trackerTypeSelectTitle
         titleLable.textColor = .titleTextColor
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
@@ -33,7 +33,7 @@ final class TrackerTypeSelectViewController: UIViewController {
         let habbitButton = UIButton(type: .system)
         habbitButton.translatesAutoresizingMaskIntoConstraints = false
         habbitButton.layer.cornerRadius = 16
-        let habbitButtonText = NSLocalizedString("habbitButtonText", comment: "")
+        let habbitButtonText = L10n.habbitButtonText
         habbitButton.setTitle(habbitButtonText, for: .normal)
         habbitButton.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         habbitButton.backgroundColor = .darkButtonColor
@@ -46,7 +46,7 @@ final class TrackerTypeSelectViewController: UIViewController {
         let notRegularButton = UIButton(type: .system)
         notRegularButton.translatesAutoresizingMaskIntoConstraints = false
         notRegularButton.layer.cornerRadius = 16
-        let notRegularButtonText = NSLocalizedString("notRegularButtonText", comment: "")
+        let notRegularButtonText = L10n.notRegularButtonText
         notRegularButton.setTitle(notRegularButtonText, for: .normal)
         notRegularButton.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         notRegularButton.backgroundColor = .darkButtonColor
