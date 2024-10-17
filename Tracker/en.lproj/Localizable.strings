@@ -27,6 +27,12 @@ Created by Fedor Zavyalov on 02.09.2024.
 "editText" = "Edit";
 "deletText" = "Delete";
 
+//Alert
+"alertMessage" = "Are you sure to delete?";
+"alertDelete" = "Delete";
+"aletCancel" = "Cancel";
+
+
 //MARK: - TabBarViewController
 
 "trackers" = "Trackers";

@@ -18,7 +18,8 @@ final class TrackerViewController: UIViewController{
 
     private lazy var addTrackerButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(named: "Tracker Add Plus")
+        let image = Asset.Images.trackerAddPlus.image
+//        let image = UIImage(named: "Tracker Add Plus")
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .trackerBlack
@@ -57,14 +58,14 @@ final class TrackerViewController: UIViewController{
     private lazy var trackerLabel: UILabel = {
         let trackerLabel = UILabel()
         trackerLabel.font = UIFont(name: "SFProDisplay-Bold", size: 34)
-        let trackerMainLable = NSLocalizedString("trackMainLable", comment: "Main Lable")
+        let trackerMainLable = L10n.trackMainLable
         trackerLabel.text = trackerMainLable
         trackerLabel.translatesAutoresizingMaskIntoConstraints = false
         trackerLabel.textColor = .trackerBlack
         return trackerLabel
     }()
     
-    let searchFieldPlaceholder = NSLocalizedString("searchFieldPlaceholder", comment: "search field placeholder")
+    let searchFieldPlaceholder = L10n.searchFieldPlaceholder
     
     private lazy var searchField: UISearchBar = {
         let searchField = UISearchBar()
@@ -83,7 +84,8 @@ final class TrackerViewController: UIViewController{
     private lazy var emptyTrackerListImage: UIImageView = {
         let emptyTrackerListImage = UIImageView()
         emptyTrackerListImage.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(named: "Empty Tracker List") ?? UIImage()
+        let image = Asset.Images.emptyTrackerList.image
+//        let image = UIImage(named: "Empty Tracker List") ?? UIImage()
         emptyTrackerListImage.image = image
         return emptyTrackerListImage
     }()
@@ -91,7 +93,7 @@ final class TrackerViewController: UIViewController{
     private lazy var emptyTrackerListText: UILabel = {
         let emptyTrackerListText = UILabel()
         emptyTrackerListText.translatesAutoresizingMaskIntoConstraints = false
-        let emtyTrackerPlaceholderText = NSLocalizedString("emtyTrackerPlaceholderText", comment: "Text of empty placeholder")
+        let emtyTrackerPlaceholderText = L10n.emtyTrackerPlaceholderText
         emptyTrackerListText.text = emtyTrackerPlaceholderText
         emptyTrackerListText.font = UIFont(name: "SFProDisplay-Medium", size: 12)
         emptyTrackerListText.tintColor = .trackerBlack
@@ -123,7 +125,7 @@ final class TrackerViewController: UIViewController{
         filterButton.translatesAutoresizingMaskIntoConstraints = false
         filterButton.backgroundColor = .trackerBlue
         filterButton.layer.cornerRadius = 17
-        let filterButtonText = NSLocalizedString("filterButtonText", comment: "Text of filter button")
+        let filterButtonText = L10n.filterButtonText
         filterButton.setTitle(filterButtonText, for: .normal)
         filterButton.titleLabel?.font = UIFont(name: "SFProDisplay-Regular", size: 16)
         filterButton.titleLabel?.tintColor = .trackerWhite
@@ -245,14 +247,16 @@ final class TrackerViewController: UIViewController{
         trackerCollectionView.reloadData()
         
         if viewModel.isTrackerExists() {
-            let image = UIImage(named: "NoTracker")
+            let image = Asset.Images.noTracker.image
+//            let image = UIImage(named: "NoTracker")
             emptyTrackerListImage.image = image
-            let notFoundTrackerPlaceholderText = NSLocalizedString("notFoundTrackerPlaceholderText", comment: "Text of placeholder when trackers not found")
+            let notFoundTrackerPlaceholderText = L10n.notFoundTrackerPlaceholderText
             emptyTrackerListText.text = notFoundTrackerPlaceholderText
         } else {
-            let image = UIImage(named: "Empty Tracker List")
+            let image = Asset.Images.emptyTrackerList.image
+//            let image = UIImage(named: "Empty Tracker List")
             emptyTrackerListImage.image = image
-            let emtyTrackerPlaceholderText = NSLocalizedString("emtyTrackerPlaceholderText", comment: "Text of empty placeholder")
+            let emtyTrackerPlaceholderText = L10n.emtyTrackerPlaceholderText
             emptyTrackerListText.text = emtyTrackerPlaceholderText
         }
         
@@ -499,14 +503,17 @@ extension TrackerViewController: UICollectionViewDelegateFlowLayout {
         let deletText = NSLocalizedString("deletText", comment: "")
         let removeAction = UIAction(title: deletText, attributes: UIMenuElement.Attributes.destructive, handler: { [weak self] _ in
             guard let self = self else { return }
-            let alert = UIAlertController(title: nil, message: "Эта категория точно не нужна?", preferredStyle: .actionSheet)
-            let alertDeleteAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+            let alertMessage = L10n.alertMessage
+            let deleteAlertButtonText = L10n.deleteAlertButtonText
+            let alert = UIAlertController(title: nil, message: alertMessage, preferredStyle: .actionSheet)
+            let alertDeleteAction = UIAlertAction(title: deleteAlertButtonText, style: .destructive) { _ in
             
                 if let indexPath = indexPaths.first {
                     self.removeTracker(indexPath: indexPath)
                 }
             }
-            let alertCancelAction = UIAlertAction(title: "Отменить", style: .cancel) { _ in
+            let cancelAlertButtonText = L10n.cancelAlertButtonText
+            let alertCancelAction = UIAlertAction(title: cancelAlertButtonText, style: .cancel) { _ in
                 alert.dismiss(animated: true)
             }
             alert.addAction(alertDeleteAction)
@@ -522,14 +529,14 @@ extension TrackerViewController: UICollectionViewDelegateFlowLayout {
     
     func getPinAction(indexPath: IndexPath) -> UIAction {
         if (self.viewModel.numberOfSectionsPinCategory() == 1 ) && (indexPath.section == 0) {
-            let pinText = NSLocalizedString("unpinText", comment: "")
-            let unPinAction = UIAction(title: pinText, handler: { [weak self] _ in
+            let unpinText = L10n.unpinText
+            let unPinAction = UIAction(title: unpinText, handler: { [weak self] _ in
                 guard let self = self else { return }
                 self.unPinTracker(indexPath: indexPath)
             })
             return unPinAction
         } else {
-            let pinText = NSLocalizedString("pinText", comment: "")
+            let pinText = L10n.pinText
             let pinAction = UIAction(title: pinText, handler: { [weak self] _ in
                 guard let self = self else { return }
                     self.pinTracker(indexPath: IndexPath(row: indexPath.row, section: indexPath.section - self.viewModel.numberOfSectionsPinCategory()))

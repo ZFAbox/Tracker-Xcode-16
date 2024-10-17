@@ -71,6 +71,7 @@
 		9F9EAEE82CBD1D1A00C1A08B /* Metrica Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9EAEE72CBD1D1900C1A08B /* Metrica Parameters.swift */; };
 		9FA3F5C62CC0F63700BF46A7 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3F5C52CC0F63700BF46A7 /* Strings+Generated.swift */; };
 		9FA3F5C82CC0F9FC00BF46A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA3F5C72CC0F9FC00BF46A7 /* LaunchScreen.storyboard */; };
+		9FA3F5CA2CC1080B00BF46A7 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3F5C92CC1080B00BF46A7 /* Assets+Generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		9F9EAEE72CBD1D1900C1A08B /* Metrica Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metrica Parameters.swift"; sourceTree = "<group>"; };
 		9FA3F5C52CC0F63700BF46A7 /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		9FA3F5C72CC0F9FC00BF46A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9FA3F5C92CC1080B00BF46A7 /* Assets+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
 		F9EE6C8ADABF10A949B0945B /* Pods-Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tracker.release.xcconfig"; path = "Target Support Files/Pods-Tracker/Pods-Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -403,6 +405,7 @@
 		9FA3F5C42CC0F55500BF46A7 /* SwiftGen */ = {
 			isa = PBXGroup;
 			children = (
+				9FA3F5C92CC1080B00BF46A7 /* Assets+Generated.swift */,
 				9FA3F5C52CC0F63700BF46A7 /* Strings+Generated.swift */,
 			);
 			path = SwiftGen;
@@ -616,6 +619,7 @@
 				900AB3CF2CB9CC7B00A28B12 /* RegularTrackerEditViewController.swift in Sources */,
 				900AB3D02CB9CC7B00A28B12 /* UIViewController+hideKeyboard Extansion.swift in Sources */,
 				900AB3D12CB9CC7B00A28B12 /* Array+Reoder Extendion.swift in Sources */,
+				9FA3F5CA2CC1080B00BF46A7 /* Assets+Generated.swift in Sources */,
 				900AB3D32CB9CC7B00A28B12 /* TrackerBinding.swift in Sources */,
 				900AB3D42CB9CC7B00A28B12 /* EmojiAndColorsSupplementaryViewCell.swift in Sources */,
 				900AB3D52CB9CC7B00A28B12 /* NotRegularTrackerCreateViewController.swift in Sources */,
