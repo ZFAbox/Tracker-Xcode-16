@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-final class TrackerViewController: UIViewController{
+final class TrackerViewController: UIViewController, UIGestureRecognizerDelegate {
 
 //MARK: - Constants
     
@@ -19,13 +19,11 @@ final class TrackerViewController: UIViewController{
     private lazy var addTrackerButton: UIButton = {
         let button = UIButton()
         let image = Asset.Images.trackerAddPlus.image
-//        let image = UIImage(named: "Tracker Add Plus")
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .trackerBlack
         button.addTarget(self, action: #selector(addTarget), for: .touchUpInside)
         return button
-        
     }()
 
     private lazy var datePicker: UIDatePicker = {
@@ -54,6 +52,9 @@ final class TrackerViewController: UIViewController{
         trackerLabel.isUserInteractionEnabled = false
         return trackerLabel
     }()
+    
+    
+
 
     private lazy var trackerLabel: UILabel = {
         let trackerLabel = UILabel()

@@ -134,6 +134,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
         trackerView.backgroundColor = color
         dayMarkButton.backgroundColor = color
         
+        
         trackerNameLable.text = tracker.name
         emoji.text = tracker.emoji
         
@@ -143,11 +144,16 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
             trackerUndone()
         }
         
-        if let date = currentDate {
-            if date > Date(){
+        if let selectedDate = currentDate {
+            if selectedDate > Date(){
                 dayMarkButton.isEnabled = false
             } else {
                 dayMarkButton.isEnabled = true
+            }
+            let currentDate = DateFormatter.removeTime(date: Date())
+            if (!tracker.isRegular) && (completedDays > 0) && (selectedDate < currentDate) {
+                dayMarkButton.isEnabled = false
+                trackerDone()
             }
         }
         
@@ -155,6 +161,7 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
             dayMarkButton.isEnabled = false
             trackerDone()
         }
+
     }
     
     @objc func buttonTapped(){
