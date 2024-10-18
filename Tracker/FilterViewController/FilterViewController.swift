@@ -35,6 +35,7 @@ final class FilterViewController: UIViewController {
         let titleLable = UILabel()
         let filterTitle = NSLocalizedString("filterTitle", comment: "")
         titleLable.text = filterTitle
+        titleLable.textColor = .titleTextColor
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         return titleLable
     }()
@@ -42,11 +43,12 @@ final class FilterViewController: UIViewController {
     private lazy var filtertTableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.cornerRadius = 16
-        tableView.backgroundColor = .trackerWhite
+        tableView.backgroundColor = .applicationBackgroundColor
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(FilterTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.rowHeight = 75
+        tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
         return tableView
     }()
@@ -64,10 +66,13 @@ final class FilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .trackerWhite
+        view.backgroundColor = .applicationBackgroundColor
         addSubviews()
         setConstrints()
+        traitCollectionDidChange(.current)
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         let trackerForToday = NSLocalizedString("trackerForToday", comment: "")
@@ -116,7 +121,7 @@ extension FilterViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FilterTableViewCell
         let filterNameText = filters[indexPath.row]
         cell.setFilterNameText(filterNameText)
-        cell.backgroundColor = .trackerBackgroundOpacityGray
+        cell.backgroundColor = .tableCellBackgoundColor
         cell.checkMarkIsHidden(!((isFilterSelected == true) && (filters[indexPath.row] == selectedFilter)))
         cell.separateViewIsHidden(indexPath.row == filters.count - 1)
         return cell

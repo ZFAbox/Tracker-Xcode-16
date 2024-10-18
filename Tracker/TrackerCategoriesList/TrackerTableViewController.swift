@@ -41,7 +41,7 @@ final class TrackerTableViewController: UIViewController {
         text.numberOfLines = 2
         text.textAlignment = .center
         text.font = UIFont(name: "SFProDisplay-Medium", size: 12)
-        text.tintColor = .trackerBlack
+        text.tintColor = .generalTextColor
         return text
     }()
     
@@ -49,7 +49,7 @@ final class TrackerTableViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 16
-        tableView.backgroundColor = .trackerWhite
+        tableView.backgroundColor = .applicationBackgroundColor
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TrackerCategoriesListCell.self, forCellReuseIdentifier: "cell")
@@ -148,7 +148,7 @@ extension TrackerTableViewController: UITableViewDataSource {
         let categoryName = trackerCategoriesViewModel.object(at: indexPath)
         cell.categoryName.text = categoryName
         cell.accessoryType = .none
-        cell.backgroundColor = .trackerBackgroundOpacityGray
+        cell.backgroundColor = .tableCellBackgoundColor
         if indexPath.row == trackerCategoriesViewModel.count() - 1 {
             cell.layer.cornerRadius = 16
             cell.clipsToBounds = true

@@ -13,7 +13,7 @@ final class FilterTableViewCell: UITableViewCell {
     private lazy var filterName: UILabel = {
         let lable = UILabel()
         lable.text = "Категория"
-        lable.textColor = .trackerBlack
+        lable.textColor = .generalTextColor
         lable.font = UIFont(name: "SFProDisplay-Regular", size: 17)
         return lable
     }()

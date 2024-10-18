@@ -58,7 +58,6 @@ class TrackerCreateViewCell: UITableViewCell {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         let isDarkStyle = traitCollection.userInterfaceStyle == .dark
-//        contentView.backgroundColor = isDarkStyle ? .trackerBackgroundOpacityDarkGray : .trackerBackgroundOpacityGray
         mainTitle.textColor = isDarkStyle ? .trackerWhite : .trackerBlack
         additionalTitle.textColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
         accessoryImageView.tintColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray

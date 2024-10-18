@@ -22,19 +22,17 @@ final class ScheduleViewController: UIViewController {
     
     private lazy var titleLable: UILabel = {
         let titleLable = UILabel()
-//        titleLable.translatesAutoresizingMaskIntoConstraints = false
         let scheduleTitle = NSLocalizedString("scheduleTitle", comment: "")
         titleLable.text = scheduleTitle
-        titleLable.tintColor = .trackerBlack
+        titleLable.tintColor = .titleTextColor
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         return titleLable
     }()
     
     private lazy var scheduleTableView: UITableView = {
         let table = UITableView()
-//        table.translatesAutoresizingMaskIntoConstraints = false
         table.layer.cornerRadius = 16
-        table.backgroundColor = .trackerWhite
+        table.backgroundColor = .applicationBackgroundColor
         table.dataSource = self
         table.delegate = self
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -42,19 +40,18 @@ final class ScheduleViewController: UIViewController {
         table.separatorInset.right = 16
         table.separatorInset.left = 16
         table.separatorColor = .trackerDarkGray
-        table.isScrollEnabled = false
+        table.isScrollEnabled = true
         return table
     }()
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 16
         let confirmScheduleButtonText = NSLocalizedString("confirmScheduleButtonText", comment: "")
         button.setTitle(confirmScheduleButtonText, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
-        button.backgroundColor = .trackerBlack
-        button.tintColor = .trackerWhite
+        button.backgroundColor = .darkButtonColor
+        button.tintColor = .darkButtonTextColor
         button.addTarget(self, action: #selector(confirmedButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -70,7 +67,7 @@ final class ScheduleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .trackerWhite
+        view.backgroundColor = .applicationBackgroundColor
         addSubviews()
         setConstraints()
     }
@@ -87,9 +84,6 @@ final class ScheduleViewController: UIViewController {
             subView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(subView)
         }
-//        view.addSubview(titleLable)
-//        view.addSubview(scheduleTableView)
-//        view.addSubview(confirmButton)
     }
     
     private func setConstraints(){
@@ -109,7 +103,7 @@ final class ScheduleViewController: UIViewController {
             scheduleTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
             scheduleTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             scheduleTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            scheduleTableView.heightAnchor.constraint(equalToConstant: CGFloat(75 * Weekdays.scheduleSubtitlesArray.count))
+            scheduleTableView.bottomAnchor.constraint(equalTo: confirmButton.topAnchor, constant: -24)
         ])
     }
     
@@ -131,6 +125,14 @@ extension ScheduleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         configureCell(cell, at: indexPath)
+        
+        if indexPath.row == 6 {
+            cell.layer.cornerRadius = 16
+            cell.clipsToBounds = true
+            cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        } else {
+            cell.layer.cornerRadius = 0
+        }
         return cell
     }
     
@@ -142,7 +144,7 @@ extension ScheduleViewController: UITableViewDataSource {
         switcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
         switcher.onTintColor = .trackerBlue
         cell.accessoryView = switcher
-        cell.backgroundColor = .trackerBackgroundOpacityGray
+        cell.backgroundColor = .tableCellBackgoundColor
     }
     
     @objc func switchChanged(_ sender: UISwitch){

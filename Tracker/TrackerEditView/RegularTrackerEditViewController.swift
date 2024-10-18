@@ -292,6 +292,7 @@ final class RegularTrackerEditViewController: UIViewController, ScheduleViewCont
         textFieldLimitationMessage.removeFromSuperview()
         trackerNameTextField.text = tracker.name
         placeholderLableView.isHidden = true
+        traitCollectionDidChange(.current)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

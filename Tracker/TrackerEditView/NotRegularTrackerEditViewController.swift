@@ -279,6 +279,7 @@ final class NotRegularTrackerEditViewController: UIViewController {
         textFieldLimitationMessage.removeFromSuperview()
         trackerNameTextField.text = tracker.name
         placeholderLableView.isHidden = true
+        traitCollectionDidChange(.current)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

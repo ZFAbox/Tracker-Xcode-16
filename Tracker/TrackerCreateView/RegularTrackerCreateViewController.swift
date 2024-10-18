@@ -253,6 +253,7 @@ class RegularTrackerCreateViewController: UIViewController, ScheduleViewControll
         addSubviews()
         setConstraints()
         textFieldLimitationMessage.removeFromSuperview()
+        traitCollectionDidChange(.current)
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
