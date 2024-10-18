@@ -267,7 +267,7 @@ class NotRegularTrackerCreateViewController: UIViewController {
     
     @objc func createTracker(){
         trackerSchedule = Weekdays.notRegularTrackerSchedule
-        
+        print(trackerSchedule)
         guard let category = self.category else {
             preconditionFailure("Ошибка выбора категории: категория не выбрана")
         }

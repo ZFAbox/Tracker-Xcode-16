@@ -20,6 +20,7 @@
 "emtyTrackerPlaceholderText" = "Что будем отслеживать?";
 "notFoundTrackerPlaceholderText" = "Ничего не найдено";
 "filterButtonText" = "Фильтры";
+"pinHeaderText" = "Закрепленные";
 
 //Context Menu
 "pinText" = "Закрепить";
@@ -46,7 +47,6 @@
 "perfectDays" = "Идеальные дни";
 "trackersCompleted" = "Трекеров завершено";
 "averageValue" = "Среднее значение";
-
 "emtyStatisticsText" = "Анализировать пока нечего";
 
 //MARK: - RegularTrackerCreateViewController, NotRegularTrackerCreateViewController, RegularTrackerEditViewController

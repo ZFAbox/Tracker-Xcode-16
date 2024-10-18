@@ -155,13 +155,16 @@ final class TrackerCollectionViewCell: UICollectionViewCell {
                 dayMarkButton.isEnabled = false
                 trackerDone()
             }
+            if (selectedDate < currentDate) && isCompletedToday && (!tracker.isRegular) {
+                dayMarkButton.isEnabled = true
+                trackerDone()
+            }
         }
         
         if (!tracker.isRegular) && isCompletedBefore {
             dayMarkButton.isEnabled = false
             trackerDone()
         }
-
     }
     
     @objc func buttonTapped(){

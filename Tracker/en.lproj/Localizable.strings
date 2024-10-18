@@ -20,6 +20,7 @@ Created by Fedor Zavyalov on 02.09.2024.
 "emtyTrackerPlaceholderText" = "What will we track?";
 "notFoundTrackerPlaceholderText" = "Nothing found";
 "filterButtonText" = "Filters";
+"pinHeaderText" = "Pined";
 
 //Context Menu
 "pinText" = "Pin";

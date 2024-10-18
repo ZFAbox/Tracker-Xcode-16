@@ -101,6 +101,8 @@ internal enum L10n {
   internal static let pageTwoText = L10n.tr("Localizable", "pageTwoText", fallback: "Даже если это не литры воды и йога")
   /// Идеальные дни
   internal static let perfectDays = L10n.tr("Localizable", "perfectDays", fallback: "Идеальные дни")
+  /// Закрепленные
+  internal static let pinHeaderText = L10n.tr("Localizable", "pinHeaderText", fallback: "Закрепленные")
   /// Закрепить
   internal static let pinText = L10n.tr("Localizable", "pinText", fallback: "Закрепить")
   /// Редактирование привычки

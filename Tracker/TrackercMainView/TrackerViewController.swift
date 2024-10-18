@@ -261,8 +261,8 @@ final class TrackerViewController: UIViewController, UIGestureRecognizerDelegate
             emptyTrackerListText.text = emtyTrackerPlaceholderText
         }
         
-        trackerCollectionView.isHidden = viewModel.isVisibalteTrackersEmpty()
-        filterButton.isHidden = viewModel.isVisibalteTrackersEmpty()
+//        trackerCollectionView.isHidden = viewModel.isVisibalteTrackersEmpty()
+//        filterButton.isHidden = viewModel.isVisibalteTrackersEmpty()
     }
     
 //MARK: - Add subview and constraints
@@ -430,8 +430,9 @@ extension TrackerViewController: UICollectionViewDataSource {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: id, for: indexPath) as! TrackerSupplementaryViewCell
         if (viewModel.numberOfSectionsPinCategory() == 1) && (indexPath.section == 0) {
             if id == "header" {
-                let headerTitleText = viewModel.headerPinTitle(for: indexPath)
-                headerView.titleLable.text = headerTitleText
+                let pinHeaderText = L10n.pinHeaderText
+//                let headerTitleText = viewModel.headerPinTitle(for: indexPath)
+                headerView.titleLable.text = pinHeaderText
             } else {
                 headerView.titleLable.text = ""
             }
