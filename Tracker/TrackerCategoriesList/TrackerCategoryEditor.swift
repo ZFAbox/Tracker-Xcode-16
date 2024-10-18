@@ -28,6 +28,7 @@ final class TrackerCategoryEditor: UIViewController {
         let titleLable = UILabel()
         let categoryEditTitleText = NSLocalizedString("categoryEditTitleText", comment: "")
         titleLable.text = categoryEditTitleText
+        titleLable.textColor = .titleTextColor
         titleLable.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         return titleLable
     }()

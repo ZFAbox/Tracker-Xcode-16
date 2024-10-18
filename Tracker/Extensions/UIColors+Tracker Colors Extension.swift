@@ -98,7 +98,6 @@ extension UIColor {
         }
     }
     
-    
     static let disableButtonTextColor = UIColor { (traits: UITraitCollection) -> UIColor in
         if traits.userInterfaceStyle == .light {
             return white
@@ -120,6 +119,14 @@ extension UIColor {
             return trackerBlack
         } else {
             return white
+        }
+    }
+    
+    static let textFiledColor = UIColor { (traits: UITraitCollection) -> UIColor in
+        if traits.userInterfaceStyle == .light {
+            return trackerBackgroundOpacityGray
+        } else {
+            return trackerBackgroundOpacityDarkGray
         }
     }
     
