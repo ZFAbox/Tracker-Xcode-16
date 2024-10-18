@@ -224,8 +224,9 @@ class NotRegularTrackerCreateViewController: UIViewController {
         let createButtonText = NSLocalizedString("createButtonText", comment: "")
         button.setTitle(createButtonText, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
-        button.tintColor = .trackerWhite
-        button.backgroundColor = .trackerDarkGray
+        button.titleLabel?.textColor = .white
+        button.tintColor = .white
+        button.backgroundColor = .disableButtonColor
         button.addTarget(self, action: #selector(createTracker), for: .touchUpInside)
         button.isEnabled = false
         return button
@@ -240,7 +241,7 @@ class NotRegularTrackerCreateViewController: UIViewController {
         button.setTitle(cancelButtonText, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         button.tintColor = .trackerPink
-        button.backgroundColor = .trackerWhite
+        button.backgroundColor = .none
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.trackerPink.cgColor
         button.addTarget(self, action: #selector(cancel), for: .touchUpInside)
@@ -255,6 +256,21 @@ class NotRegularTrackerCreateViewController: UIViewController {
         addSubviews()
         setConstraints()
         textFieldLimitationMessage.removeFromSuperview()
+    }
+    
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        let isDarkStyle = traitCollection.userInterfaceStyle == .dark
+        view.backgroundColor = isDarkStyle ? . trackerBlack : .trackerWhite
+        titleLable.textColor = isDarkStyle ? .trackerWhite : .trackerBlack
+        layerTextFieldView.backgroundColor = isDarkStyle ? .trackerBackgroundOpacityDarkGray : .trackerBackgroundOpacityGray
+        placeholderLableView.textColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
+        emojiAndColors.backgroundColor = isDarkStyle ? . trackerBlack : . trackerWhite
+        cancelButton.backgroundColor = isDarkStyle ? .none : .none
+        createButton.titleLabel?.textColor = isDarkStyle ? .white : .white
+//        createButton.backgroundColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
+        categoryAndScheduleTableView.backgroundColor = isDarkStyle ? . trackerBlack : . trackerWhite
     }
     
     @objc func clearText(){
@@ -301,10 +317,10 @@ class NotRegularTrackerCreateViewController: UIViewController {
     
     private func isCreateButtonEnable() {
         if createIsCompleted() {
-            createButton.backgroundColor = .trackerBlack
+            createButton.backgroundColor = .darkButtonColor
             createButton.isEnabled = true
         } else {
-            createButton.backgroundColor = .trackerDarkGray
+            createButton.backgroundColor = .disableButtonColor
             createButton.isEnabled = false
         }
     }
@@ -476,7 +492,7 @@ extension NotRegularTrackerCreateViewController: UITableViewDataSource {
                 cell.additionalTitle.text = category
             }
         }
-        cell.backgroundColor = .trackerBackgroundOpacityGray
+        cell.backgroundColor = .tableCellBackgoundColor
         cell.accessoryType = .disclosureIndicator
         return cell
     }

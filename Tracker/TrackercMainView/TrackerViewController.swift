@@ -261,8 +261,8 @@ final class TrackerViewController: UIViewController, UIGestureRecognizerDelegate
             emptyTrackerListText.text = emtyTrackerPlaceholderText
         }
         
-//        trackerCollectionView.isHidden = viewModel.isVisibalteTrackersEmpty()
-//        filterButton.isHidden = viewModel.isVisibalteTrackersEmpty()
+        trackerCollectionView.isHidden = viewModel.isVisibalteTrackersEmpty()
+        filterButton.isHidden = viewModel.isVisibalteTrackersEmpty()
     }
     
 //MARK: - Add subview and constraints
@@ -321,7 +321,7 @@ final class TrackerViewController: UIViewController, UIGestureRecognizerDelegate
     
     private func setAddTrackerButtonConstraints() {
         NSLayoutConstraint.activate([
-        addTrackerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 49),
+        addTrackerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 57),
         addTrackerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
         addTrackerButton.heightAnchor.constraint(equalToConstant: 18),
         addTrackerButton.widthAnchor.constraint(equalToConstant: 18)

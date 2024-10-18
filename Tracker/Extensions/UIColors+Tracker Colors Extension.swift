@@ -29,6 +29,7 @@ extension UIColor {
     static var trackerPink = UIColor.rgbColors(red: 245, green: 107, blue: 108, alpha: 1)
     static var trackerWhite = UIColor.rgbColors(red: 245, green: 245, blue: 245, alpha: 1)
     static var trackerBackgroundOpacityGray =  UIColor.rgbColors(red: 230, green: 232, blue: 235, alpha: 0.4)
+    static var trackerBackgroundOpacityDarkGray =  UIColor.rgbColors(red: 65, green: 65, blue: 65, alpha: 0.85)
     static var trackerEmojiSelectionGray =  UIColor.rgbColors(red: 230, green: 232, blue: 235, alpha: 1)
     
     //Dark and Ligth mode color set
@@ -72,5 +73,22 @@ extension UIColor {
             return trackerWhite
         }
     }
+    
+    static let tableCellBackgoundColor = UIColor { (traits: UITraitCollection) -> UIColor in
+        if traits.userInterfaceStyle == .light {
+            return trackerBackgroundOpacityGray
+        } else {
+            return trackerBackgroundOpacityDarkGray
+        }
+    }
+    
+    static let disableButtonColor = UIColor { (traits: UITraitCollection) -> UIColor in
+        if traits.userInterfaceStyle == .light {
+            return trackerDarkGray
+        } else {
+            return trackerDarkGray
+        }
+    }
+    
     
 }

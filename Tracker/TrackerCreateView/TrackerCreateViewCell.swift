@@ -24,7 +24,7 @@ class TrackerCreateViewCell: UITableViewCell {
         let titleLable = UILabel()
         titleLable.translatesAutoresizingMaskIntoConstraints = false
         titleLable.text = "Категория"
-        titleLable.textColor = .trackerBlack
+//        titleLable.textColor = .trackerBlack
         titleLable.font = UIFont(name: "SFProDisplay-Regular", size: 17)
         return titleLable
     }()
@@ -33,7 +33,7 @@ class TrackerCreateViewCell: UITableViewCell {
     lazy var additionalTitle: UILabel = {
         let titleLable = UILabel()
         titleLable.translatesAutoresizingMaskIntoConstraints = false
-        titleLable.textColor = .trackerDarkGray
+//        titleLable.textColor = .trackerDarkGray
         titleLable.font = UIFont(name: "SFProDisplay-Regular", size: 17)
         return titleLable
     }()
@@ -41,7 +41,7 @@ class TrackerCreateViewCell: UITableViewCell {
     lazy var accessoryImageView: UIImageView = {
         let  defaultImage = UIImage(systemName: "chevron.right")
         let  imageView = UIImageView(image: defaultImage)
-        imageView.tintColor = .trackerDarkGray
+//        imageView.tintColor = .trackerDarkGray
         return imageView
     }()
     
@@ -52,6 +52,16 @@ class TrackerCreateViewCell: UITableViewCell {
         addSubiews()
         setConstraints()
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        let isDarkStyle = traitCollection.userInterfaceStyle == .dark
+//        contentView.layer.backgroundColor = isDarkStyle ? UIColor.trackerBackgroundOpacityDarkGray.cgColor: UIColor.trackerBackgroundOpacityGray.cgColor
+        mainTitle.textColor = isDarkStyle ? .trackerWhite : .trackerBlack
+        additionalTitle.backgroundColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
+        accessoryImageView.tintColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
+
     }
     
     required init?(coder: NSCoder) {
