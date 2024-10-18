@@ -33,14 +33,15 @@ class TrackerCreateViewCell: UITableViewCell {
     lazy var additionalTitle: UILabel = {
         let titleLable = UILabel()
         titleLable.translatesAutoresizingMaskIntoConstraints = false
-//        titleLable.textColor = .trackerDarkGray
+        titleLable.textColor = .trackerDarkGray
         titleLable.font = UIFont(name: "SFProDisplay-Regular", size: 17)
         return titleLable
     }()
     
     lazy var accessoryImageView: UIImageView = {
-        let  defaultImage = UIImage(systemName: "chevron.right")
+        let  defaultImage = UIImage(resource: .chevron)
         let  imageView = UIImageView(image: defaultImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
 //        imageView.tintColor = .trackerDarkGray
         return imageView
     }()
@@ -51,17 +52,16 @@ class TrackerCreateViewCell: UITableViewCell {
         lableStackView.addArrangedSubview(mainTitle)
         addSubiews()
         setConstraints()
-        
+        traitCollectionDidChange(.current)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         let isDarkStyle = traitCollection.userInterfaceStyle == .dark
-//        contentView.layer.backgroundColor = isDarkStyle ? UIColor.trackerBackgroundOpacityDarkGray.cgColor: UIColor.trackerBackgroundOpacityGray.cgColor
+//        contentView.backgroundColor = isDarkStyle ? .trackerBackgroundOpacityDarkGray : .trackerBackgroundOpacityGray
         mainTitle.textColor = isDarkStyle ? .trackerWhite : .trackerBlack
-        additionalTitle.backgroundColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
+        additionalTitle.textColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
         accessoryImageView.tintColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
-
     }
     
     required init?(coder: NSCoder) {
@@ -70,10 +70,12 @@ class TrackerCreateViewCell: UITableViewCell {
     
     func addSubiews(){
         contentView.addSubview(lableStackView)
+        contentView.addSubview(accessoryImageView)
     }
     
     func setConstraints(){
         setLableStackViewConstraints()
+        setAccessoryImageViewConstraints()
     }
     
     func setLableStackViewConstraints(){
@@ -81,6 +83,14 @@ class TrackerCreateViewCell: UITableViewCell {
             lableStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             lableStackView.heightAnchor.constraint(equalToConstant: 46),
             lableStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
+    }
+    
+    func setAccessoryImageViewConstraints(){
+        NSLayoutConstraint.activate([
+            accessoryImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            accessoryImageView.heightAnchor.constraint(equalToConstant: 12),
+            accessoryImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     

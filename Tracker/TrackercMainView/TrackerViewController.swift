@@ -53,9 +53,6 @@ final class TrackerViewController: UIViewController, UIGestureRecognizerDelegate
         return trackerLabel
     }()
     
-    
-
-
     private lazy var trackerLabel: UILabel = {
         let trackerLabel = UILabel()
         trackerLabel.font = UIFont(name: "SFProDisplay-Bold", size: 34)
@@ -86,7 +83,6 @@ final class TrackerViewController: UIViewController, UIGestureRecognizerDelegate
         let emptyTrackerListImage = UIImageView()
         emptyTrackerListImage.translatesAutoresizingMaskIntoConstraints = false
         let image = Asset.Images.emptyTrackerList.image
-//        let image = UIImage(named: "Empty Tracker List") ?? UIImage()
         emptyTrackerListImage.image = image
         return emptyTrackerListImage
     }()
@@ -146,7 +142,6 @@ final class TrackerViewController: UIViewController, UIGestureRecognizerDelegate
     override func viewWillAppear(_ animated: Bool) {
         viewModel.performFetches()
         updateTrackerCollectionView()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {

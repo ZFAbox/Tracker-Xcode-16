@@ -90,5 +90,29 @@ extension UIColor {
         }
     }
     
+    static let activeButtonColor = UIColor { (traits: UITraitCollection) -> UIColor in
+        if traits.userInterfaceStyle == .light {
+            return trackerBlack
+        } else {
+            return white
+        }
+    }
+    
+    
+    static let disableButtonTextColor = UIColor { (traits: UITraitCollection) -> UIColor in
+        if traits.userInterfaceStyle == .light {
+            return white
+        } else {
+            return white
+        }
+    }
+    
+    static let activeButtonTextColor = UIColor { (traits: UITraitCollection) -> UIColor in
+        if traits.userInterfaceStyle == .light {
+            return trackerWhite
+        } else {
+            return trackerBlack
+        }
+    }
     
 }
