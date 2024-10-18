@@ -129,7 +129,7 @@ final class NotRegularTrackerEditViewController: UIViewController {
         let daysLableText = String.localizedStringWithFormat(NSLocalizedString("numberOfDays", comment: "number of complited trackers"), completedDays)
         lable.text = daysLableText
         lable.textAlignment = .center
-        lable.tintColor = .trackerBlack
+        lable.tintColor = .daysLableColor
         lable.font = UIFont(name: "SFProDisplay-Bold", size: 32)
         return lable
     }()
@@ -167,7 +167,7 @@ final class NotRegularTrackerEditViewController: UIViewController {
         trackerName.translatesAutoresizingMaskIntoConstraints = false
         trackerName.text = ""
         trackerName.font = UIFont(name: "SFProDisplay-Regular", size: 17)
-        trackerName.textColor = .trackerBlack
+        trackerName.textColor = .generalTextColor
         trackerName.backgroundColor = .none
         trackerName.textContainerInset = UIEdgeInsets(top: 27, left: 0, bottom: 0, right: 0)
         trackerName.delegate = self
@@ -246,10 +246,10 @@ final class NotRegularTrackerEditViewController: UIViewController {
         let createButtonText = NSLocalizedString("saveButtonText", comment: "")
         button.setTitle(createButtonText, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
-        button.tintColor = .trackerWhite
-        button.backgroundColor = .trackerDarkGray
+        button.tintColor = .disableButtonTextColor
+        button.backgroundColor = .disableButtonColor
         button.addTarget(self, action: #selector(createTracker), for: .touchUpInside)
-        button.isEnabled = false
+        button.isUserInteractionEnabled = false
         return button
     }()
     
@@ -262,7 +262,7 @@ final class NotRegularTrackerEditViewController: UIViewController {
         button.setTitle(cancelButtonText, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         button.tintColor = .trackerPink
-        button.backgroundColor = .trackerWhite
+        button.backgroundColor = .none
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.trackerPink.cgColor
         button.addTarget(self, action: #selector(cancel), for: .touchUpInside)
@@ -281,8 +281,21 @@ final class NotRegularTrackerEditViewController: UIViewController {
         placeholderLableView.isHidden = true
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        let isDarkStyle = traitCollection.userInterfaceStyle == .dark
+        view.backgroundColor = isDarkStyle ? . trackerBlack : .trackerWhite
+        titleLable.textColor = isDarkStyle ? .trackerWhite : .trackerBlack
+        layerTextFieldView.backgroundColor = isDarkStyle ? .trackerBackgroundOpacityDarkGray : .trackerBackgroundOpacityGray
+        placeholderLableView.textColor = isDarkStyle ? .trackerDarkGray : .trackerDarkGray
+        emojiAndColors.backgroundColor = isDarkStyle ? . trackerBlack : . trackerWhite
+        categoryAndScheduleTableView.backgroundColor = isDarkStyle ? . trackerBlack : . trackerWhite
+        cancelButton.backgroundColor = isDarkStyle ? .none : .none
+    }
+    
     @objc func clearText(){
         trackerNameTextField.text = ""
+        trackerName = ""
         UIView.animate(withDuration: 0.3) { [self] in
             self.placeholderLableView.isHidden = false
             hideClearButton()
@@ -321,11 +334,13 @@ final class NotRegularTrackerEditViewController: UIViewController {
     
     private func isCreateButtonEnable() {
         if createIsCompleted() {
-            createButton.backgroundColor = .trackerBlack
-            createButton.isEnabled = true
+            createButton.backgroundColor = .activeButtonColor
+            createButton.tintColor = .activeButtonTextColor
+            createButton.isUserInteractionEnabled = true
         } else {
-            createButton.backgroundColor = .trackerDarkGray
-            createButton.isEnabled = false
+            createButton.backgroundColor = .disableButtonColor
+            createButton.tintColor = .disableButtonTextColor
+            createButton.isUserInteractionEnabled = false
         }
     }
     
@@ -496,8 +511,7 @@ extension NotRegularTrackerEditViewController: UITableViewDataSource {
                 cell.lableStackView.addArrangedSubview(cell.additionalTitle)
                 cell.additionalTitle.text = category
             }
-        cell.backgroundColor = .trackerBackgroundOpacityGray
-        cell.accessoryType = .disclosureIndicator
+        cell.backgroundColor = .tableCellBackgoundColor
         return cell
     }
 }
@@ -605,7 +619,7 @@ extension NotRegularTrackerEditViewController: UICollectionViewDelegateFlowLayou
             }
             let selectedCell = collectionView.cellForItem(at: IndexPath(row: index ?? 0, section: indexPath.section)) as? EmojiAndColorCollectionViewCell
             UIView.animate(withDuration: 0.3) {
-                selectedCell?.backgroundColor = .trackerWhite
+                selectedCell?.backgroundColor = .applicationBackgroundColor
             }
         }
         

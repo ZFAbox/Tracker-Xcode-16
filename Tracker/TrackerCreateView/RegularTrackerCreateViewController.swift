@@ -264,11 +264,11 @@ class RegularTrackerCreateViewController: UIViewController, ScheduleViewControll
         emojiAndColors.backgroundColor = isDarkStyle ? . trackerBlack : . trackerWhite
         categoryAndScheduleTableView.backgroundColor = isDarkStyle ? . trackerBlack : . trackerWhite
         cancelButton.backgroundColor = isDarkStyle ? .none : .none
-        
     }
     
     @objc func clearText(){
         trackerNameTextField.text = ""
+        trackerName = ""
         UIView.animate(withDuration: 0.3) { [self] in
             self.placeholderLableView.isHidden = false
             hideClearButton()

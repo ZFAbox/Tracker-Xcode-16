@@ -115,4 +115,12 @@ extension UIColor {
         }
     }
     
+    static let daysLableColor = UIColor { (traits: UITraitCollection) -> UIColor in
+        if traits.userInterfaceStyle == .light {
+            return trackerBlack
+        } else {
+            return white
+        }
+    }
+    
 }
