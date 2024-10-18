@@ -35,11 +35,12 @@ final class ScheduleViewController: UIViewController {
         table.backgroundColor = .applicationBackgroundColor
         table.dataSource = self
         table.delegate = self
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = 75
-        table.separatorInset.right = 16
-        table.separatorInset.left = 16
-        table.separatorColor = .trackerDarkGray
+//        table.separatorInset.right = 16
+//        table.separatorInset.left = 16
+        table.separatorStyle = .none
+//        table.separatorColor = .trackerDarkGray
         table.isScrollEnabled = true
         return table
     }()
@@ -123,27 +124,27 @@ extension ScheduleViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ScheduleTableViewCell
         configureCell(cell, at: indexPath)
         
         if indexPath.row == 6 {
             cell.layer.cornerRadius = 16
             cell.clipsToBounds = true
             cell.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            cell.separatorView.isHidden = true
         } else {
             cell.layer.cornerRadius = 0
+            cell.separatorView.isHidden = false
         }
         return cell
     }
     
-    func configureCell(_ cell:UITableViewCell, at indexPath: IndexPath){
+    func configureCell(_ cell:ScheduleTableViewCell, at indexPath: IndexPath){
         cell.textLabel?.text = Weekdays.weekdayForIndex(at: indexPath.row).localized
-        let switcher = UISwitch(frame: .zero)
-        switcher.setOn(false, animated: true)
-        switcher.tag = indexPath.row
-        switcher.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
-        switcher.onTintColor = .trackerBlue
-        cell.accessoryView = switcher
+        cell.switchButton.setOn(false, animated: true)
+        cell.switchButton.tag = indexPath.row
+        cell.switchButton.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        cell.switchButton.onTintColor = .trackerBlue
         cell.backgroundColor = .tableCellBackgoundColor
     }
     

@@ -60,6 +60,7 @@
 		900AB3DE2CB9CC7B00A28B12 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 900AB3762CB9CC7B00A28B12 /* SF-Pro-Display-Bold.otf */; };
 		900AB3E12CB9CCC900A28B12 /* TrackerCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 900AB3DF2CB9CCC900A28B12 /* TrackerCoreData.xcdatamodeld */; };
 		900AB3E82CB9D0CE00A28B12 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 900AB3E62CB9D0CE00A28B12 /* Localizable.strings */; };
+		902521A42CC3082800EBA578 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902521A32CC3082800EBA578 /* ScheduleTableViewCell.swift */; };
 		903398CD2CB9C64700F05A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903398C52CB9C64700F05A63 /* AppDelegate.swift */; };
 		903398CE2CB9C64700F05A63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903398CA2CB9C64700F05A63 /* SceneDelegate.swift */; };
 		903398D02CB9C64700F05A63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 903398C62CB9C64700F05A63 /* Assets.xcassets */; };
@@ -140,6 +141,7 @@
 		900AB3E02CB9CCC900A28B12 /* TrackerCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackerCoreData.xcdatamodel; sourceTree = "<group>"; };
 		900AB3E72CB9D0CE00A28B12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		900AB3E92CB9D0D400A28B12 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		902521A32CC3082800EBA578 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		903398C52CB9C64700F05A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		903398C62CB9C64700F05A63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		903398C72CB9C64700F05A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		900AB3812CB9CC7B00A28B12 /* ScheduleViewController */ = {
 			isa = PBXGroup;
 			children = (
+				902521A32CC3082800EBA578 /* ScheduleTableViewCell.swift */,
 				900AB3802CB9CC7B00A28B12 /* ScheduleViewController.swift */,
 			);
 			path = ScheduleViewController;
@@ -595,6 +598,7 @@
 				900AB3B82CB9CC7B00A28B12 /* TrackerSupplementaryViewCell.swift in Sources */,
 				900AB3B92CB9CC7B00A28B12 /* TrackerViewController.swift in Sources */,
 				900AB3BA2CB9CC7B00A28B12 /* TrackerCreateViewCell.swift in Sources */,
+				902521A42CC3082800EBA578 /* ScheduleTableViewCell.swift in Sources */,
 				9FA3F5C62CC0F63700BF46A7 /* Strings+Generated.swift in Sources */,
 				900AB3BB2CB9CC7B00A28B12 /* DateFormatter+weekday Extension.swift in Sources */,
 				900AB3BC2CB9CC7B00A28B12 /* TrackerCategoryCreate.swift in Sources */,

@@ -35,7 +35,7 @@ final class TrackerCategoryEditor: UIViewController {
     
     private lazy var layerTextFieldView: UIView = {
         let layerTextFieldView = UIView()
-        layerTextFieldView.backgroundColor = .trackerBackgroundOpacityGray
+        layerTextFieldView.backgroundColor = .textFiledColor
         layerTextFieldView.layer.cornerRadius = 16
         return layerTextFieldView
     }()
@@ -51,6 +51,7 @@ final class TrackerCategoryEditor: UIViewController {
         textField.font = UIFont(name: "SFProDisplay-Regular", size: 17)
         textField.backgroundColor = .none
         textField.text = categoryName
+        textField.textColor = .generalTextColor
         textField.addTarget(self, action: #selector(inputText(_ :)), for: .allEditingEvents)
         textField.delegate = self
         return textField
@@ -62,8 +63,8 @@ final class TrackerCategoryEditor: UIViewController {
         let confirmEditButtonText = NSLocalizedString("confirmEditButtonText", comment: "")
         button.setTitle( confirmEditButtonText, for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
-        button.backgroundColor = .trackerDarkGray
-        button.tintColor = .trackerWhite
+        button.backgroundColor = .activeButtonColor
+        button.tintColor = .activeButtonTextColor
         button.addTarget(self, action: #selector(createCategory), for: .touchUpInside)
         return button
     }()
@@ -72,8 +73,9 @@ final class TrackerCategoryEditor: UIViewController {
         let text = sender.text ?? ""
         categoryName = text
         UIView.animate(withDuration: 0.3) {
-            self.createCategoryButton.isEnabled = !text.isEmpty
-            self.createCategoryButton.backgroundColor = text.isEmpty ? .trackerDarkGray : .trackerBlack
+            self.createCategoryButton.isUserInteractionEnabled = !text.isEmpty
+            self.createCategoryButton.backgroundColor = text.isEmpty ? .disableButtonColor : .activeButtonColor
+            self.createCategoryButton.tintColor = text.isEmpty ? .disableButtonTextColor : .activeButtonTextColor
         }
     }
 
@@ -84,7 +86,7 @@ final class TrackerCategoryEditor: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .trackerWhite
+        view.backgroundColor = .applicationBackgroundColor
         hideKeyboardWhenTappedAround()
         addSubviews()
         setConstraints()
