@@ -542,7 +542,6 @@ extension RegularTrackerEditViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 1 {
             let viewController = ScheduleViewController(delegate: self)
-//            viewController.delegate = self
             viewController.modalPresentationStyle = .popover
             self.present(viewController, animated: true)
         } else {

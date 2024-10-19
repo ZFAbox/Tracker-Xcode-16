@@ -163,7 +163,6 @@ extension ScheduleViewController: UITableViewDataSource {
                 subtitle == Weekdays.scheduleSubtitlesArray[sender.tag]
             }
         }
-        print(trackerSchedule)
         sender.isEnabled = true
     }
 }
